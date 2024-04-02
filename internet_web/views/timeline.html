@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Feed | CircleHub</title>
+    <title>Feed | FriendCircle</title>
 </head>
 
 <body class="timeline">
+    <div id="loading"></div>
     <header>
         <div class="container">
-            <h1 id="logomarca">Circle<span>Hub</span></h1>
+            <h1 id="logomarca">Friend<span>Circle</span></h1>
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Perfil</a></li>
@@ -19,7 +20,7 @@
             </ul>
             <form action="" method="get">
                 <input type="text" placeholder="Pesquisar">
-                <input type="button" value="pesquisar">
+                <input type="submit" value="pesquisar">
             </form>
         </div>
     </header>
@@ -37,7 +38,7 @@
                         <li>Curtidas: 0</li>
                     </ul>
                 </div>
-                
+
                 <div class="grupos">
 
                 </div>
@@ -45,11 +46,151 @@
 
             <section class="postagem">
                 <div class="criar">
-
+                    <div class="criacao">
+                        <div class="fotoperfil"></div>
+                        <textarea placeholder="Sobre oque você quer falar hoje?" name="" id="" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                    <ul>
+                        <li id="midia_bt"><input accept="image/*" type="file"></li>
+                        <li id="privacidade_bt"> 
+                            <select name="" id="">
+                                <option value="0">Privacidade</option>
+                                <option value="1">Pessoal</option>
+                            </select>
+                        </li>
+                        <li id="postar_bt">Postar</li>
+                    </ul>
                 </div>
-
+                <div class="classificar">
+                    <p>Classificar por: </p>
+                    <select name="" id="">
+                        <option value="1">Relevantes</option>
+                        <option value="2">Grupo 1</option>
+                        <option value="3">Grupo 2</option>
+                    </select>
+                </div>
                 <div class="exibir">
-
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="informacoes">
+                            <div class="fotoperfil"></div>
+                            <div class="s2">
+                                <a href="#">Nome</a>
+                                <p>sobre mim</p>
+                            </div>
+                        </div>
+                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
+                        <img src="../img/teste.png" alt="Conteudo se tiver">
+                        <div class="acoes">
+                            <button>Curtir</button>
+                            <button>Comentar</button>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
