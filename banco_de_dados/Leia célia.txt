@@ -1,1 +1,9 @@
 willian: preciso de ajuda com as cardinalidades
+
+
+24/04
+nos relacionamentos colocar _ para separar palavras
+mesmo o relacionamento faz parte do DER e deve seguir as regras basicas
+colocar tudo minusculo
+grupos e usuarios (1,1) ligado a tb_seguindo_grupos (1,n)
+colocar data nos comentarios postagens
