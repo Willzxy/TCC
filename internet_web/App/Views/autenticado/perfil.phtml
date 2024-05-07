@@ -11,20 +11,7 @@
 </head>
 
 <body class="perfil">
-    <header id="menu">
-        <div class="container">
-            <h1 id="logomarca">Friend<span>Circle</span></h1>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Minha rede</a></li>
-            </ul>
-            <form action="" method="get">
-                <input type="text" placeholder="Pesquisar">
-                <input type="submit" value="pesquisar">
-            </form>
-        </div>
-    </header>
+    <?php $this->layout('MenuSuperior') ?>
     <main>
         <div class="sec1">
             <div class="perfil_info">
@@ -38,8 +25,6 @@
             </div>
 
             <div class="exibir_conteudos">
-                <h1>Postagens deste usuario</h1>
-
                 <div class="conteudo">
                     <div class="informacoes">
                         <div class="fotoperfil"></div>
@@ -66,14 +51,14 @@
                 </div>
             </div>
         </div>
+
         <div class="sec2">
-            <h1>Sugestóes de usuarios</h1>
+            <h1>Sugestões para seguir</h1>
             <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li><form action="" method="post" ><img src="img/icon1.png" alt="" class="fotoperfil"> <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir"></form> </li>
+                <li><form action="" method="post" ><img src="img/icon1.png" alt="" class="fotoperfil"> <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir"></form> </li>
+                <li><form action="" method="post" ><img src="img/icon1.png" alt="" class="fotoperfil"> <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir"></form> </li>
+                <li><form action="" method="post" ><img src="img/icon1.png" alt="" class="fotoperfil"> <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir"></form> </li>
             </ul>
         </div>
     </main>

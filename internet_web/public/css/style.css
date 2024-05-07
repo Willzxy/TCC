@@ -622,7 +622,8 @@
 
 .perfil .sec2 {
     width: 20%;
-    height: 200px;
+    height: 100%;
+    min-height: 200px;
     margin-top: 25px;
 
     border-radius: 10px;
@@ -631,10 +632,58 @@
     box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
 }
 
+.perfil .sec2 h1 {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 15px 0px;
+}
+
+.perfil .sec2 ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.perfil .sec2 ul li {
+    display: flex;
+    margin: 5px auto;
+    padding: 2px;
+    width: 90%;
+}
+
+.perfil .sec2 ul li form {
+    display: flex;
+    width: 100%;
+}
+
+.perfil .sec2 ul li form .fotoperfil {
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+}
+
+.perfil .sec2 ul li form .nome {
+    margin-left: auto;
+}
+
+.perfil .sec2 ul li form input {
+    margin-left: auto;
+
+    border-radius: 25px;
+    background-color: rgba(245, 222, 179, 0);
+    padding: 2px;
+    color: var(--principal);
+    border: 0.1px solid var(--principal);
+    cursor: pointer;
+} 
+
 .perfil .perfil_info {
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
+    overflow: hidden;
     box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
 }
 
@@ -668,4 +717,99 @@
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
     box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+.perfil .conteudo {
+    padding: 15px;
+}
+
+.perfil .conteudo .informacoes {
+    display: flex;
+}
+
+.perfil .conteudo .informacoes .fotoperfil {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgb(103, 103, 103);
+    background-image: url('../img/icon1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.perfil .conteudo .informacoes .s2 {
+    margin-left: 10px;
+}
+
+.perfil .conteudo .informacoes .s3 {
+    margin-left: auto;
+}
+
+.perfil .conteudo .informacoes .s3 button {
+    background-color: rgba(255, 255, 255, 0);
+    outline: 0;
+    border: 0;
+    width: 30px;
+    padding: 5px;
+    letter-spacing: 2px;
+    font-size: .85em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.perfil .conteudo .informacoes .s3 button:hover {
+    background-color: rgba(169, 169, 169, 0.281);
+}
+
+.perfil .conteudo .informacoes .s2 a {
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
+
+.perfil .conteudo .informacoes .s2 a:hover {
+    text-decoration: underline;
+    color: var(--principal);
+}
+
+.perfil .conteudo .informacoes .s2 p {
+    font-size: .9em;
+    color: rgb(69, 69, 69);
+}
+
+.perfil .conteudo .descricao {
+    margin: 10px 0;
+    font-size: .95em;
+    text-align: justify;
+}
+
+.perfil .conteudo img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.perfil .conteudo .acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.perfil .conteudo button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.335);
+    border: 1px solid rgba(102, 102, 102, 0.408);
+    color: rgb(69, 69, 69);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.perfil .conteudo button:hover {
+    background-color: rgb(190, 190, 190);
+    transition: .3s;
 }

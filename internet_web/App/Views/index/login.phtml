@@ -43,15 +43,16 @@
         </div>
 
         <div style="display: block;" id="registrar">
-            <form class="registrar" action="">
+            <form class="registrar" action="/cadastrar" method="post">
                 <p>Crie sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input type="text" placeholder="Nome de usuario">
-                        <input type="email" placeholder="Digite seu email">
-                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-                        <input type="password" placeholder="Confirme sua senha" name="c_senha" id="c_senha">
+                        <input name="nome" type="text" placeholder="Nome de usuario">
+                        <input name="email" type="email" placeholder="Digite seu email">
+                        <input name="senha" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                        <input name="senhaconfirm" type="password" placeholder="Confirme sua senha" name="c_senha" id="c_senha">
                     </div>
+                    
                     <input id="entrar" type="submit" value="Cadastrar">
                     <a href="#" id="link_registrar">Já tem uma conta? clique aqui!</a>
                 </div>

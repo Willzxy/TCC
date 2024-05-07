@@ -12,27 +12,14 @@
 
 <body class="timeline">
     <div id="loading"></div>
-    <header id="menu">
-        <div class="container">
-            <h1 id="logomarca">Friend<span>Circle</span></h1>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Minha rede</a></li>
-            </ul>
-            <form action="" method="get">
-                <input type="text" placeholder="Pesquisar">
-                <input type="submit" value="pesquisar">
-            </form>
-        </div>
-    </header>
+    <?php $this->layout('MenuSuperior') ?>
     <main>
         <div class="container">
             <section class="n1">
                 <div class="perfil">
                     <div class="outbar"></div>
                     <div class="fotodeperfil"></div>
-                    <a href="#">Willian</a>
+                    <a href="#"> <?php echo $_SESSION['nome']; ?> </a>
                     <p>Gosto de tudo e um pouco a mais</p>
                     <ul>
                         <li>Conexões: <span>25</span></li>
