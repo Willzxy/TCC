@@ -10,6 +10,10 @@ use MF\Action;
 
 class AuthController extends Action {
     public function cadastrar(){
+
+        // Verificar dados
+        
+
         $senhaMD5 = md5($_POST['senha']);
 
         $classe = new Usuarios();
@@ -50,5 +54,7 @@ class AuthController extends Action {
     public function sair(){
         session_start();
         session_destroy();
+
+        $this->redirect('/');
     }
 }
