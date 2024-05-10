@@ -24,6 +24,14 @@ Class Route extends BootStrap {
             'middleware' => 'PermitirCadastro'
         );
 
+        $routes['autenticar'] = array(
+            'route' => '/autenticar',
+            'controller' => 'AuthController',
+            'action' => 'autenticar',
+            'name' => 'autenticar',
+            'middleware' => 'PermitirCadastro'
+        );
+
         $routes['sair'] = array(
             'route' => '/sair',
             'controller' => 'AuthController',

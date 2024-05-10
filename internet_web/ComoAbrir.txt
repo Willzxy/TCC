@@ -1,0 +1,11 @@
+Instruções passo a passo do como iniciar o servidor do meu projeto
+1 - Abra o CMD (Promp de comando) tanto no linux como no windows
+
+2 - Busque o diretório Public do projeto com o comando CD (diretório)
+exemplo: cd C:\User\Documents\Internet_Web\Public
+
+3 - agora que você está dentro da pasta public agora execute o comando "PHP -S localhost:8080" no terminal para iniciar o servidor na porta 8080, não necessáriamente você deve utilizar a porta 8080
+
+4 - se você fez tudo certo digitando localhost:8080 em seu navegador você já vai conseguir abrir o projeto em seu navegador
+
+----- escrevi isso só por precaução.

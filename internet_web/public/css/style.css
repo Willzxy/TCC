@@ -267,7 +267,7 @@
 }
 
 .timeline .n1 .perfil {
-    height: 220px;
+    min-height: 220px;
 
     border-radius: 10px;
     background-color: white;

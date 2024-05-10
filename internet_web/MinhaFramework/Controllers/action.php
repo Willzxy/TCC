@@ -19,6 +19,15 @@ abstract class Action{
         include_once "../App/Layouts/$name.phtml";
     }
 
+    function show($var){
+        if(!isset($_SESSION[$var])){
+            echo 'Variavel não encontrada na sessão';
+            return;
+        }
+
+        echo $_SESSION[$var];
+    }
+
     function saveFileAvatar($file){
         try {
             $diretoriosalvar = $this->diretorioAvatar . $file['name'];

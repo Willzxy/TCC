@@ -11,8 +11,6 @@ abstract class Connection {
         try {
 
             $Mysql = new \mysqli($this->host, $this->usuario, $this->senha, $this->bd_name,);
-             
-            echo 'tem parada errada ai';
             return $Mysql;
         } catch (\Throwable $th) {
             echo $th;

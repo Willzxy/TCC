@@ -22,7 +22,7 @@ class Usuarios extends Models  {
         return $this->$attr;
     }
 
-    function Cadastrar(){
+    function cadastrar(){
         $query = "
             insert into tb_usuarios(nome, senha, email)values(
                 ?,
@@ -37,7 +37,17 @@ class Usuarios extends Models  {
     }
 
     function autenticar(){
-        $query = "select * from tb_usuarios where nome = ? or email = ? and senha = ?;";
+        $query = "select * from tb_usuarios where email = ? and senha = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $this->__get('email'), $this->__get('senha'));
+        $stmt->execute();
         
+        $results = $stmt->get_result();
+        $registro = $results->fetch_assoc();
+
+        if($registro){
+            return true;
+        }
     }
 }

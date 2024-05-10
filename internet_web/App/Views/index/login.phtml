@@ -29,11 +29,11 @@
     <div class="formulario">
 
         <div style="display: none;" id="autenticar">
-            <form class="autenticar" action="">
+            <form class="autenticar" action="/autenticar" method="post">
                 <p>Acesse sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input required type="text" name="nome" id="nome" placeholder="Digite seu nome">
+                        <input required type="text" name="email" id="email" placeholder="Digite seu e-mail">
                         <input required type="password" placeholder="Digite sua senha" name="senha" id="senha">
                     </div>
                     <input id="entrar" type="submit" value="Entrar">
@@ -47,10 +47,10 @@
                 <p>Crie sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input name="nome" type="text" placeholder="Nome de usuario">
-                        <input name="email" type="email" placeholder="Digite seu email">
-                        <input name="senha" type="password" name="senha" id="senha" placeholder="Digite sua senha">
-                        <input name="senhaconfirm" type="password" placeholder="Confirme sua senha" name="c_senha" id="c_senha">
+                        <input required name="nome" type="text" placeholder="Nome de usuario">
+                        <input required name="email" type="email" placeholder="Digite seu email">
+                        <input required name="senha" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                        <input required name="senhaconfirm" type="password" placeholder="Confirme sua senha" name="c_senha" id="c_senha">
                     </div>
                     
                     <input id="entrar" type="submit" value="Cadastrar">
@@ -60,29 +60,6 @@
         </div>
     </div>
 
-    <script>
-        let registrar = document.getElementById('link_registrar')
-        let autenticar = document.getElementById('link_autenticar')
-        let form_a = document.getElementById('autenticar')
-        let form_r = document.getElementById('registrar')
-
-
-        registrar.addEventListener('click', function (event) {
-            event.preventDefault()
-
-            form_a.style.display = 'block'
-            form_r.style.display = 'none'
-
-            console.log("teste")
-        })
-
-        autenticar.addEventListener('click', function (event) {
-            event.preventDefault()
-
-            form_a.style.display = 'none'
-            form_r.style.display = 'block'
-        })
-    </script>
+    <script src="Js/VerificarCadastro.js"></script>
 </body>
-
 </html>

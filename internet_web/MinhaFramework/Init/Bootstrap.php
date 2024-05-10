@@ -48,8 +48,8 @@ abstract class BootStrap {
 
         if($erro404){
             echo 'Rota não encontrada';
+            print($this->getUrl());
         }
-        print($this->getUrl());
     }
 
     function getRoutes(){

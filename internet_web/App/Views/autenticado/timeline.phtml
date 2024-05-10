@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Feed | FriendCircle</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Timeline | FriendCircle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body class="timeline">
@@ -19,98 +18,34 @@
                 <div class="perfil">
                     <div class="outbar"></div>
                     <div class="fotodeperfil"></div>
-                    <a href="#"> <?php echo $_SESSION['nome']; ?> </a>
-                    <p>Gosto de tudo e um pouco a mais</p>
+                    <a href="#"> <?php $this->show('noame') ?> </a>
+                    <p> <?php $this->show('sobremim') ?></p>
                     <ul>
-                        <li>Conexões: <span>25</span></li>
-                        <li>Postagens: <span>5</span></li>
-                        <li>Curtidas: <span>132</span></li>
+                        <li>Conexões: <span>0</span></li>
+                        <li>Postagens: <span>0</span></li>
+                        <li>Curtidas: <span>0</span></li>
                     </ul>
                 </div>
 
                 <div class="grupos">
                     <p>Grupos seguindo</p>
                     <ul>
-                        <li> <span class="material-symbols-outlined">
-                                group
-                            </span> Tecnologia da informação</li>
-                        <li> <span class="material-symbols-outlined">
-                                group
-                            </span> Culinaria</li>
-                        <li> <span class="material-symbols-outlined">
-                                group
-                            </span> Brasileirão 2024</li>
-                        <li> <span class="material-symbols-outlined">
-                                group
-                            </span> Ciência todo dia</li>
-                        <li> <span class="material-symbols-outlined">
-                                group
-                            </span> Flamengo FC</li>
-                        <li>Outros 5..</li>
+
                     </ul>
                 </div>
             </section>
 
             <section class="postagem">
-                <div class="criar">
-                    <div class="criacao">
-                        <div class="fotoperfil"></div>
-                        <textarea placeholder="Sobre oque você quer falar hoje?" name="" id="" cols="30"
-                            rows="10"></textarea>
-                    </div>
-                    <ul>
-                        <li id="midia_bt"><input accept="image/*" type="file"></li>
-                        <li id="privacidade_bt">
-                            <select name="" id="">
-                                <option value="0">Publico alvo</option>
-                                <option value="1">Meu perfil</option>
-                                <option value="2">Tecnologia da informação</option>
-                                <option value="3">Culinária</option>
-                                <option value="4">Brasileirão 2024</option>
-                                <option value="5">Ciência todo dia</option>
-                                <option value="6">Flamengo FC</option>
-                            </select>
-                        </li>
-                        <li id="postar_bt">Postar</li>
-                    </ul>
-                </div>
+                <?php $this->layout('CriarPostagem') ?>
+
                 <div class="classificar">
                     <p>Classificar por: </p>
+
                     <select name="" id="">
                         <option value="0">Relevantes</option>
-                        <option value="1">Tecnologia da informação</option>
-                        <option value="2">Culinária</option>
-                        <option value="3">Brasileirão 2024</option>
-                        <option value="4">Ciência todo dia</option>
-                        <option value="5">Flamengo FC</option>
                     </select>
                 </div>
                 <div class="exibir">
-
-                    <div class="conteudo">
-                        <div class="informacoes">
-                            <div class="fotoperfil"></div>
-                            <div class="s2">
-                                <a href="#">Nome</a>
-                                <p>sobre mim</p>
-                            </div>
-                            <div class="s3">
-                                <button>•••</button>
-                            </div>
-                        </div>
-                        <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit
-                            praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut
-                            nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
-                        <img src="../img/teste.png" alt="Conteudo se tiver">
-                        <div class="acoes">
-                            <button><span class="material-symbols-outlined">
-                                    thumb_up
-                                </span> Curtir</button>
-                            <button><span class="material-symbols-outlined">
-                                    comment
-                                </span> Comentar</button>
-                        </div>
-                    </div>
 
                 </div>
             </section>

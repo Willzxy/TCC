@@ -17,7 +17,7 @@ class AuthController extends Action {
         $classe->__set('nome', $_POST['nome']);
         $classe->__set('senha', $senhaMD5);
         $classe->__set('email', $_POST['email']);
-        $classe->Cadastrar();
+        $classe->cadastrar();
 
         session_start();
         $_SESSION['autenticado'] = true;
@@ -27,7 +27,24 @@ class AuthController extends Action {
     }
 
     public function autenticar(){
-        
+        $senhaMD5 = md5($_POST['senha']);
+
+        $classe = new Usuarios();
+
+        $classe->__set('email', $_POST['email']);
+        $classe->__set('senha', $senhaMD5);
+
+        $autenticado = $classe->autenticar();
+
+        if($autenticado){
+            session_start();
+            $_SESSION['autenticado'] = true;
+            $_SESSION['nome'] = 'depois nós faz isso kakakaka';
+
+            $this->redirect('/timeline');
+        }else {
+            $this->redirect('/timeline');
+        }
     }
 
     public function sair(){
