@@ -16,6 +16,16 @@
 
 /* estilos customizados */
 
+#errorform {
+    font-size: .8em;
+    color: red;
+
+    text-shadow: 0px .0px 0px black;
+}
+
+.error input {
+    border: 1px solid red;
+}
 
 .body-registrar p,.body-registrar h1, .body-registrar p li {
     text-shadow: .2px .2px 2px black;
@@ -88,6 +98,7 @@
 .body-registrar .formulario .registrar {
     padding: 20px;
     border-radius: 25px;
+    
 }
 
 .body-registrar .formulario .autenticar {

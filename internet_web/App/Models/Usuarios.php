@@ -36,6 +36,21 @@ class Usuarios extends Models  {
         $stmt->execute();
     }
 
+    function verificar_email(){
+        $query = "select * from tb_usuarios where email = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $this->__get('email'));
+        $stmt->execute();
+        
+        $results = $stmt->get_result();
+        $registro = $results->fetch_assoc();
+
+        if($registro){
+            return true;
+        }
+    }
+
     function autenticar(){
         $query = "select * from tb_usuarios where email = ? and senha = ?;";
 

@@ -6,28 +6,33 @@ require_once '../MinhaFramework/Controllers/action.php';
 require_once '../App/Models/Usuarios.php';
 
 use App\Models\Usuarios;
+use LengthException;
 use MF\Action;
 
 class AuthController extends Action {
     public function cadastrar(){
-
-        // Verificar dados
-        
-
-        $senhaMD5 = md5($_POST['senha']);
+        $debug = $this->validarDados($_POST['nome'], $_POST['senha'], $_POST['email']);
 
         $classe = new Usuarios();
-
-        $classe->__set('nome', $_POST['nome']);
-        $classe->__set('senha', $senhaMD5);
         $classe->__set('email', $_POST['email']);
-        $classe->cadastrar();
 
-        session_start();
-        $_SESSION['autenticado'] = true;
-        $_SESSION['nome'] = $_POST['nome'];
+        $verificar_email = $classe->verificar_email();
+        if(!$debug){
+            $this->redirect('/?loginerror=1');
+        }elseif($verificar_email){
+            $this->redirect('/?loginerror=2');
+        }else{
+            $senhaMD5 = md5($_POST['senha']);
+            $classe->__set('nome', $_POST['nome']);
+            $classe->__set('senha', $senhaMD5);
+            $classe->cadastrar();
 
-        $this->redirect('/timeline');
+            session_start();
+            $_SESSION['autenticado'] = true;
+            $_SESSION['nome'] = $_POST['nome'];
+
+            $this->redirect('/timeline');
+        }
     }
 
     public function autenticar(){
@@ -50,6 +55,32 @@ class AuthController extends Action {
             $this->redirect('/timeline');
         }
     }
+
+    public function validarDados($nome, $senha, $email){
+        $debug = true;
+
+        $nome = str_replace(' ', '', $nome);
+        $email = str_replace(' ', '', $email);
+
+        if($nome == '' || $email == ''){
+            $debug = false;
+        }
+
+        if(strlen($senha) > 32) {
+            $debug = false;
+        }
+
+        if(strlen($nome) > 120) {
+            $debug = false;
+        }
+
+        if(strlen($email) > 200) {
+            $debug = false;
+        }
+
+        return $debug;
+    }
+
 
     public function sair(){
         session_start();
