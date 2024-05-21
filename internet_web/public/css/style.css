@@ -220,32 +220,57 @@
 }
 
 #menu form input {
+    position: relative;
     height: 30px;
-}
-
-#menu form input[type='text'] {
+    width: 250px;
     outline: 0;
     border: 0.2px solid rgb(198, 198, 198);
     padding: 2px;
     border-radius: 5px;
 }
 
-#menu form input[type='submit'] {
-    outline: 0;
-    border: 0.2px solid rgb(198, 198, 198);
-    padding: 2px;
-    border-radius: 5px;
+#menu form ul {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    top: 40px;
+    width: 230px;
+
+    border-radius: 10px;
+    background-color: white;
+    border: 0.2px solid rgb(228, 228, 228);
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+#menu form ul li  {
+    width: 100%;
+}
+
+#menu form ul li input {
+    border-radius: 10px;
+    background-color: rgba(240, 240, 240, 0.531);
+    text-decoration: none;
+    border: none;
+    color: black;
+
+    cursor: pointer;
+}
+
+
+#menu form ul.visible {
+    display: flex;
 }
 
 #menu ul li a {
-    display: block;
-    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
     width: 100px;
 
     text-align: center;
     border-radius: 10px;
-    border: 1px solid rgb(215, 215, 215);
-    background-color: rgb(240, 240, 240);
+    background-color: rgba(240, 240, 240, 0.531);
     text-decoration: none;
     color: black;
 
@@ -254,6 +279,12 @@
 }
 
 #menu ul li a:hover {
+    background-color: rgb(215, 215, 215);
+
+    transition: .3s;
+}
+
+#menu form input[type='submit']:hover {
     background-color: rgb(215, 215, 215);
 
     transition: .3s;
@@ -710,9 +741,10 @@
     height: 125px;
     margin-left: 20px;
     margin-top: -65px;
+    margin-bottom: 15px;
 
     border-radius: 50%;
-    border-color: 1px solid black;
+    border: 5px solid white;
     background-image: url(../img/icon1.png);
     background-size: cover;
 }
@@ -824,3 +856,177 @@
     background-color: rgb(190, 190, 190);
     transition: .3s;
 }
+
+.perfil .sec1 .nomeperfil {
+    color: black;
+    text-decoration: none;
+}
+
+.perfil .sec1 .nomeperfil:hover {
+    text-decoration: underline;
+}
+
+.perfil .sec1 .perfil_info form input {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    background-color: var(--principal_2);
+    border: none;
+    text-shadow: .2px .2px 2px black;
+    cursor: pointer;
+}
+
+/* Pagina Minha rede */
+
+.minharede {
+    background-color: rgb(239, 239, 239);
+}
+
+.minharede main {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.minharede .sec1 {
+    margin-right: 25px;
+    width: 15%;
+}
+
+.minharede .outbar {
+    border-radius: 10px;
+    background-color: white;
+    border: 0.2px solid rgb(228, 228, 228);
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+.minharede .sec2 {
+    width: 50%;
+}
+
+.minharede .sec1 ul {
+    padding: 5px;
+    width: 95%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.minharede .sec1 ul li {
+    display: flex;
+    margin-bottom: 10px;
+    width: 95%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.minharede .sec1 ul li a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    padding: 4px;
+    border-radius: 15px;
+    width: 95%;
+}
+
+.minharede .sec1 ul li a span {
+    margin-right: 5px;
+}
+
+.minharede .sec1 ul li a:hover {
+    background-color: rgb(215, 215, 215);
+
+    transition: .3s;
+}
+
+.minharede .sec2 .pesquisa {
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 10px;
+    background-color: white;
+    border: 0.2px solid rgb(228, 228, 228);
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+.minharede .sec2 .pesquisa form {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.minharede .sec2 .pesquisa form input {
+    height: 30px;
+}
+
+.minharede .sec2 .pesquisa form input[type='text'] {
+    outline: 0;
+    border: 0.2px solid rgb(198, 198, 198);
+    padding: 2px;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.minharede .sec2 .pesquisa form input[type='submit'] {
+    outline: 0;
+   
+    border: 0.2px solid rgb(198, 198, 198);
+    background-color: rgba(240, 240, 240, 0.531);
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 20%;
+
+    cursor: pointer;
+}
+
+.minharede .sec2 .resultados {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 0.2px solid rgb(228, 228, 228);
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+.minharede .sec2 .resultados .usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 5px;
+    width:  130px;
+    height: 60px;
+    padding: 5px;
+}
+
+.minharede .sec2 .resultados .usuario p {
+    font-size: .8em;
+    margin: auto;
+}
+
+.minharede .sec2 .resultados .usuario input {
+    border-radius: 25px;
+    padding: 2px;
+    color: black;
+    border: 0.1px solid var(--principal);
+    cursor: pointer;
+    background-color: white;
+
+    transition: .3s;
+}
+
+.minharede .sec2 .resultados .usuario input:hover {
+    background-color: rgb(215, 215, 215);
+
+    transition: .3s;
+}
+

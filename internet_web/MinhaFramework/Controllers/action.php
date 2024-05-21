@@ -5,6 +5,11 @@ namespace MF;
 abstract class Action{
     protected $diretorioAvatar = '../App/database/avatar/';
     protected $diretorioPosts = '../App/database/posts/';
+    protected $view;
+
+    public function __construct(){
+        $this->view = new \stdClass();
+    }
 
     function render($name){
         $split = explode('.', $name);

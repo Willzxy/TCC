@@ -6,7 +6,6 @@ require_once '../MinhaFramework/Controllers/action.php';
 require_once '../App/Models/Usuarios.php';
 
 use App\Models\Usuarios;
-use LengthException;
 use MF\Action;
 
 class AuthController extends Action {
@@ -29,6 +28,7 @@ class AuthController extends Action {
 
             session_start();
             $_SESSION['autenticado'] = true;
+            $_SESSION['email'] = $_POST['email'];
             $_SESSION['nome'] = $_POST['nome'];
 
             $this->redirect('/timeline');

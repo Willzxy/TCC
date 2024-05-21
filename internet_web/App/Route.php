@@ -48,6 +48,22 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        $routes['minharede'] = array(
+            'route' => '/minharede',
+            'controller' => 'MinhaRedeController',
+            'action' => 'minharede',
+            'name' => 'minharede',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['pesquisar'] = array(
+            'route' => '/pesquisar',
+            'controller' => 'MinhaRedeController',
+            'action' => 'pesquisar',
+            'name' => 'pesquisar',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
         $routes['perfil'] = array(
             'route' => '/perfil',
             'controller' => 'TimelineController',

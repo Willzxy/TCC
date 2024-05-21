@@ -65,4 +65,22 @@ class Usuarios extends Models  {
             return true;
         }
     }
+
+    function procurarUsuarios($procurar){
+        $procurar = '%' . $procurar . '%';
+        $query = 'select id, nome from tb_usuarios where email != ? and nome like ? limit 25;';
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $this->__get('email'), $procurar);
+        $stmt->execute();
+
+        $results = $stmt->get_result();
+
+       $registros = array();
+        while ($row = $results->fetch_assoc()) {
+            array_push($registros, $row);
+        }
+
+        return $registros;
+    }
 }

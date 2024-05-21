@@ -1,0 +1,24 @@
+<div class="pesquisa">
+    <form action="/pesquisar">
+        <input type="hidden" name="tip" value='usuarios'>
+        <input name="search" type="text">
+        <input type="submit" value="Pesquisar">
+    </form>
+</div>
+
+<div class="resultados">
+    <?php
+    if(isset($this->view->usuarios)){
+        foreach ($this->view->usuarios as $key => $value) { ?>
+
+                <div id="usuario<?php echo $key ?>" class="usuario">
+                    <p><?php print($value['nome']) ?></p>
+                    <input type="button" value="Solicitar Conexão">
+                </div>
+
+       <?php }
+    }else{
+        echo "<h1> Pesquisar por usuarios </h1>";
+    }
+    ?>
+</div>

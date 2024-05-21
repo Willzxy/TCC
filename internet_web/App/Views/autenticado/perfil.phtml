@@ -4,51 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <?php $this->layout('LinksHead') ?>
     <title>Perfil | FriendCircle</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body class="perfil">
     <?php $this->layout('MenuSuperior') ?>
     <main>
         <div class="sec1">
-            <div class="perfil_info">
-                <div class="outbar"></div>
-                <div class="fotoperfil"></div>
-                <h1> <?php $this->show('nome') ?> </h1>
-                <p>descricao</p>
-                <form action="" method="post">
-                    <input type="button" value="Solicitar conexão">
-                </form>
-            </div>
-
-            <div class="exibir_conteudos">
-                <div class="conteudo">
-                    <div class="informacoes">
-                        <div class="fotoperfil"></div>
-                        <div class="s2">
-                            <a href="#"> <?php $this->show('nome') ?> </a>
-                            <p>sobre mim</p>
-                        </div>
-                        <div class="s3">
-                            <button>•••</button>
-                        </div>
-                    </div>
-                    <p class="descricao"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas velit
-                        praesentium quae dolorum nesciunt libero similique rerum eligendi! Neque similique ut
-                        nesciunt sequi sed, voluptatibus suscipit corporis. Voluptates, harum voluptatem.</p>
-                    <img src="../img/teste.png" alt="Conteudo se tiver">
-                    <div class="acoes">
-                        <button><span class="material-symbols-outlined">
-                                thumb_up
-                            </span> Curtir</button>
-                        <button><span class="material-symbols-outlined">
-                                comment
-                            </span> Comentar</button>
-                    </div>
-                </div>
-            </div>
+            <?php $this->layout('InformacoesPerfil') ?>
         </div>
 
         <div class="sec2">
@@ -56,27 +20,29 @@
             <ul>
                 <li>
                     <form action="" method="post"><img src="img/icon1.png" alt="" class="fotoperfil">
-                        <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir">
+                        <p class="nome"> nome </p> <input type="submit" value="Conectar">
                     </form>
                 </li>
                 <li>
                     <form action="" method="post"><img src="img/icon1.png" alt="" class="fotoperfil">
-                        <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir">
+                        <p class="nome"> nome </p> <input type="submit" value="Conectar">
                     </form>
                 </li>
                 <li>
                     <form action="" method="post"><img src="img/icon1.png" alt="" class="fotoperfil">
-                        <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir">
+                        <p class="nome"> nome </p> <input type="submit" value="Conectar">
                     </form>
                 </li>
                 <li>
                     <form action="" method="post"><img src="img/icon1.png" alt="" class="fotoperfil">
-                        <p class="nome"> nome do usuario </p> <input type="submit" value="Seguir">
+                        <p class="nome"> nome </p> <input type="submit" value="Conectar">
                     </form>
                 </li>
             </ul>
         </div>
     </main>
+
+    <script src="../Js/Eventos.js"></script>
 </body>
 
 </html>
