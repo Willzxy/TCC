@@ -72,6 +72,13 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        $routes['atualizarperfil'] = array(
+            'route' => '/atualizarperfil',
+            'controller' => 'PerfilController',
+            'action' => 'atualizarperfil',
+            'name' => 'atualizarperfil',
+            'middleware' => 'VerificarAutenticacao'
+        );
 
         $this->setRoutes($routes);
     }

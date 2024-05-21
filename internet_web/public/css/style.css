@@ -331,14 +331,15 @@
 }
 
 .timeline .n1 .perfil .fotodeperfil {
+    display: block;
     width: 60px;
     height: 60px;
     margin: 0px auto;
     margin-top: -25px;
     border-radius: 50%;
 
-    border: 1px solid rgb(103, 103, 103);
-    background-image: url('../img/icon1.png');
+    border: 2px solid white;
+    background-color: white;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -472,7 +473,6 @@
 
     border-radius: 50%;
 
-    background-image: url('../img/icon1.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -743,10 +743,9 @@
     margin-top: -65px;
     margin-bottom: 15px;
 
+    background-color: white;
     border-radius: 50%;
     border: 5px solid white;
-    background-image: url(../img/icon1.png);
-    background-size: cover;
 }
 
 .perfil .perfil_info h1, p, form {
@@ -774,8 +773,8 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 1px solid rgb(103, 103, 103);
-    background-image: url('../img/icon1.png');
+
+    background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -866,8 +865,8 @@
     text-decoration: underline;
 }
 
-.perfil .sec1 .perfil_info form input {
-    margin: 15px 0;
+.perfil .sec1 .perfil_info  button {
+    margin: 15px 20px;
     padding: 10px;
     border-radius: 15px;
     color: white;
@@ -876,6 +875,45 @@
     text-shadow: .2px .2px 2px black;
     cursor: pointer;
 }
+
+.perfil .perfil_info form {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil .perfil_info form .nomeperfil {
+    width: 30%;
+    height: 30px;
+
+    font-size: 1.2em;
+    font-weight: 600;
+
+    margin-bottom: 5px;
+    border-radius: 1px;
+    outline: 0;
+    border: 1px solid var(--principal);
+}
+
+.perfil .perfil_info form .descricao {
+    width: 80%;
+
+    border-radius: 1px;
+    outline: 0;
+    border: 1px solid var(--principal);
+}
+
+.perfil .perfil_info form input[type='submit'] {
+    width: 200px;
+    margin: 15px 0;
+
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    background-color: var(--principal_2);
+    border: none;
+    text-shadow: .2px .2px 2px black;
+    cursor: pointer;
+} 
 
 /* Pagina Minha rede */
 

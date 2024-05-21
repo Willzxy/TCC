@@ -13,5 +13,7 @@ class VerificarAutenticacao extends Action {
         if(!isset($_SESSION['autenticado'])){
             $this->redirect('/');
         }
+
+        
     }
 }

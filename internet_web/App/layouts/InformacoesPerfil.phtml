@@ -1,17 +1,17 @@
-<div class="perfil_info">
+<div id="perfil_info" class="perfil_info">
     <div class="outbar"></div>
-    <div class="fotoperfil"></div>
-    <h1> <a class="nomeperfil" href="/usuarios"> <?php $this->show('nome') ?> </a> </h1>
-    <p>Faça uma breve descrição sobre você</p>
-    <form action="" method="post">
-        <input type="button" value="Solicitar conexão">
-    </form>
+    <img src="../img/PerfilVazia.jpg" class="fotoperfil">
+
+    <h1> <a id="nomeantigo" class="nomeperfil" href="/usuarios"> <?php $this->show('nome') ?> </a> </h1>
+    <p id="descricaoantiga"> <?php $this->show('sobremim') ?> </p>
+
+    <button id="BotaoEditarPerfil">Editar perfil</button>
 </div>
 
 <div class="exibir_conteudos">
     <div class="conteudo">
         <div class="informacoes">
-            <div class="fotoperfil"></div>
+            <img src="../img/PerfilVazia.jpg" alt="" class="fotoperfil">
             <div class="s2">
                 <a href="#"> <?php $this->show('nome') ?> </a>
                 <p>sobre mim</p>

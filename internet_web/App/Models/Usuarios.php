@@ -83,4 +83,53 @@ class Usuarios extends Models  {
 
         return $registros;
     }
+
+    function atualizar_perfil(){
+        $query = "
+        UPDATE tb_usuarios
+        SET nome = ?, sobremim = ?
+        WHERE id = ?;
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('id') );
+        $stmt->execute();
+    }
+
+    function AtualizarDadosSecao(){
+        session_start();
+        $id = $this->buscarID($_SESSION['email']);
+        $dadosAtualizados = $this->BuscarDados($id);
+
+        $_SESSION['nome'] = $dadosAtualizados['nome'];
+        $_SESSION['sobremim'] = $dadosAtualizados['sobremim'];
+    }
+
+    function BuscarDados($id){
+        $query = "select nome, sobremim from tb_usuarios where id = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        
+        $results = $stmt->get_result();
+
+        while ($row = $results->fetch_assoc()) {
+            return $row;
+        }
+    }
+
+    function buscarID($email){
+        $query = "select id from tb_usuarios where email = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        
+        $results = $stmt->get_result();
+
+        while ($row = $results->fetch_assoc()) {
+            return $row['id'];
+        }
+    }
 }
