@@ -145,7 +145,7 @@
     color: var(--principal);
 }
 
-.body-registrar .formulario .autenticar #entrar, .body-registrar .formulario .registrar #entrar {
+.body-registrar .formulario .autenticar #entrar, .body-registrar .formulario .registrar #cadastrar {
     display: block;
     padding: 10px;
     margin: auto;

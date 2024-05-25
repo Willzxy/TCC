@@ -34,12 +34,12 @@
                 <div class="border">
                     <div class="inputs">
                         <input required type="text" name="email" id="email" placeholder="Digite seu e-mail">
-                        <input required type="password" placeholder="Digite sua senha" name="senha" id="senha">
+                        <input required minlength="8" maxlength="32" type="password" placeholder="Digite sua senha" name="senha">
                     </div>
 
                     <?php
-                        if($_GET['loginerror'] == 3) { ?>
-                            <p id="errorform">Revise seus dados dentro dos campos</p>
+                        if($_GET['login'] == 3) { ?>
+                            <p id="errorform">Ocorreu um erro durante a autenticação, tente novamente.</p>
                     <?php } ?>
 
                     <input id="entrar" type="submit" value="Entrar">
@@ -53,20 +53,20 @@
                 <p>Crie sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input required name="nome" type="text" placeholder="Nome de usuario">
-                        <input required name="email" type="email" placeholder="Digite seu email">
-                        <input required name="senha" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                        <input required maxlength="40" name="nome" type="text" placeholder="Nome de usuario">
+                        <input required maxlength="200" name="email" type="email" placeholder="Digite seu email">
+                        <input required minlength="8" maxlength="32" name="senha" type="password" name="senha" placeholder="Digite sua senha">
                     </div>
                     
                     <?php
-                        if($_GET['loginerror'] == 1) { ?>
+                        if($_GET['login'] == 1) { ?>
                             <p id="errorform">Revise seus dados dentro dos campos.</p>
-                    <?php } elseif($_GET['loginerror'] == 2) { ?> 
+                    <?php } elseif($_GET['login'] == 2) { ?> 
                             <p id="errorform">Email já cadastrado.</p>
                     <?php }
                      ?>
 
-                    <input id="entrar" type="submit" value="Cadastrar">
+                    <input id="cadastrar" type="submit" value="Cadastrar">
                     <a href="#" id="link_registrar">Já tem uma conta? clique aqui!</a>
                 </div>
             </form>

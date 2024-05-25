@@ -17,9 +17,9 @@ class AuthController extends Action {
 
         $verificar_email = $classe->verificar_email();
         if(!$debug){
-            $this->redirect('/?loginerror=1');
+            $this->redirect('/?login=1');
         }elseif($verificar_email){
-            $this->redirect('/?loginerror=2');
+            $this->redirect('/?login=2');
         }else{
             $senhaMD5 = md5($_POST['senha']);
             $classe->__set('nome', $_POST['nome']);
@@ -52,7 +52,7 @@ class AuthController extends Action {
 
             $this->redirect('/timeline');
         }else {
-            $this->redirect('/timeline');
+            $this->redirect('/?login=3');
         }
     }
 
