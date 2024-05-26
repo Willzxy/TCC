@@ -97,7 +97,7 @@ class Usuarios extends Models  {
     }
 
     function AtualizarDadosSecao(){
-        session_start();
+        session_start(); 
         $id = $this->buscarID($_SESSION['email']);
         $dadosAtualizados = $this->BuscarDados($id);
 
@@ -106,7 +106,7 @@ class Usuarios extends Models  {
     }
 
     function BuscarDados($id){
-        $query = "select nome, sobremim from tb_usuarios where id = ?;";
+        $query = "select nome, sobremim, email from tb_usuarios where id = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $id);

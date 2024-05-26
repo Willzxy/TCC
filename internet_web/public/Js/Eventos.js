@@ -29,8 +29,9 @@ let botaoEditarPerfil = document.getElementById('BotaoEditarPerfil')
 botaoEditarPerfil.addEventListener('click', (event) => {
     event.preventDefault()
 
-    let nomeantigo = document.getElementById('nomeantigo').innerHTML
-    let descricaoantiga = document.getElementById('descricaoantiga').innerHTML
+    let nomeantigo = document.getElementById('nomeantigo').innerText
+    let descricaoantiga = document.getElementById('descricaoantiga').innerText
+
 
     document.getElementById('perfil_info').innerHTML = 
     `

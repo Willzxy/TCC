@@ -10,8 +10,8 @@ use MF\Action;
 
 class PerfilController extends Action {
     function atualizarperfil(){
-        $nome = $_POST['nome'];
-        $descricao = $_POST['descricao'];
+        $nome = trim($_POST['nome']);
+        $descricao = trim($_POST['descricao']);
 
         $usuario = new Usuarios;
         $usuario->__set("nome", $nome);

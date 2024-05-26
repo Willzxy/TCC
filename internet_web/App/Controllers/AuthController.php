@@ -18,8 +18,10 @@ class AuthController extends Action {
         $verificar_email = $classe->verificar_email();
         if(!$debug){
             $this->redirect('/?login=1');
+            
         }elseif($verificar_email){
             $this->redirect('/?login=2');
+
         }else{
             $senhaMD5 = md5($_POST['senha']);
             $classe->__set('nome', $_POST['nome']);
@@ -28,8 +30,8 @@ class AuthController extends Action {
 
             session_start();
             $_SESSION['autenticado'] = true;
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['nome'] = $_POST['nome'];
+
+            $this->AtualizarDadosNaSecao($classe);
 
             $this->redirect('/timeline');
         }
@@ -48,12 +50,22 @@ class AuthController extends Action {
         if($autenticado){
             session_start();
             $_SESSION['autenticado'] = true;
-            $_SESSION['nome'] = 'depois nós faz isso kakakaka';
+            
+            $this->AtualizarDadosNaSecao($classe);
 
             $this->redirect('/timeline');
         }else {
             $this->redirect('/?login=3');
         }
+    }
+
+    public function AtualizarDadosNaSecao($classe){
+        $id = $classe->buscarID($_POST['email']);
+        $dados = $classe->BuscarDados($id);
+
+        $_SESSION['nome'] = $dados['nome'];
+        $_SESSION['sobremim'] = $dados['sobremim'];
+        $_SESSION['email'] = $dados['email'];
     }
 
     public function validarDados($nome, $senha, $email){
