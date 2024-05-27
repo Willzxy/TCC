@@ -6,7 +6,10 @@ let TemplateExibirPerfil = `
         <p>Faça uma breve descrição sobre você</p>
 
         <button id="BotaoEditarPerfil">Editar perfil</button>
-    `;
+    `
+
+let botaoEditarPerfil = document.getElementById('BotaoEditarPerfil')
+let BotaoPesquisaGrupo = document.getElementById('pesquisaGrupo')
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100); 
     });
 });
-
-let botaoEditarPerfil = document.getElementById('BotaoEditarPerfil')
 
 botaoEditarPerfil.addEventListener('click', (event) => {
     event.preventDefault()
@@ -46,3 +47,17 @@ botaoEditarPerfil.addEventListener('click', (event) => {
         </form>
     `
 })
+
+BotaoPesquisaGrupo.addEventListener('click', (event) => {
+    event.preventDefault()
+})
+
+function pesquisarUsuarios(){
+    let campoPesquisa = document.getElementById('pesquisar_campo').value
+    window.location.replace(`/pesquisar?tip=usuarios&search=${campoPesquisa}`);
+}
+
+function pesquisarGrupos(){
+    let campoPesquisa = document.getElementById('pesquisar_campo').value
+    window.location.replace(`/pesquisar?tip=grupos&search=${campoPesquisa}`);
+}

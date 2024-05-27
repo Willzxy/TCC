@@ -10,14 +10,14 @@
     <?php
     if(isset($this->view->usuarios)){
         foreach ($this->view->usuarios as $key => $value) { ?>
-
-                <div id="usuario<?php echo $key ?>" class="usuario">
-                    <img src="../img/PerfilVazia.jpg" alt="">
-                    <p><?php print($value['nome']) ?></p>
-                    <p><?php print($value['sobremim']) ?></p>
-                    <input type="button" value="Solicitar Conexão">
-                </div>
-
+                <form id="usuario<?php echo $key ?>" class="usuario">
+                    <div class="bar">
+                        <img src="../img/PerfilVazia.jpg" alt="">
+                        <p class="nome"><?php print($value['nome']) ?></p>
+                    </div>
+                    <p class="sobremim"><?php print($value['sobremim']) ?></p>
+                    <input type="submit" value="Pedir para seguir">
+                </form>
        <?php }
     }else{
         echo "<h1> Pesquisar por usuarios </h1>";

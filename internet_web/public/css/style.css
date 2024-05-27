@@ -195,7 +195,7 @@
     width: 61.84%;
 }
 
-#menu form {
+#menu .form {
     margin-left: auto;
     margin-right: 10px;
 }
@@ -219,7 +219,7 @@
     height: 30px;
 }
 
-#menu form input {
+#menu .form input {
     position: relative;
     height: 30px;
     width: 250px;
@@ -229,7 +229,7 @@
     border-radius: 5px;
 }
 
-#menu form ul {
+#menu .form ul {
     position: absolute;
     display: none;
     flex-direction: column;
@@ -242,11 +242,11 @@
     box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
 }
 
-#menu form ul li  {
+#menu .form ul li  {
     width: 100%;
 }
 
-#menu form ul li input {
+#menu .form ul li input {
     border-radius: 10px;
     background-color: rgba(240, 240, 240, 0.531);
     text-decoration: none;
@@ -257,7 +257,7 @@
 }
 
 
-#menu form ul.visible {
+#menu .form ul.visible {
     display: flex;
 }
 
@@ -284,7 +284,7 @@
     transition: .3s;
 }
 
-#menu form input[type='submit']:hover {
+#menu .form input[type='submit']:hover {
     background-color: rgb(215, 215, 215);
 
     transition: .3s;
@@ -1027,7 +1027,10 @@
 .minharede .sec2 .resultados {
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
 
     margin-top: 20px;
     border-radius: 10px;
@@ -1038,21 +1041,54 @@
 
 .minharede .sec2 .resultados .usuario {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+
     margin-top: 5px;
+    margin-right: 20px;
     width:  130px;
-    height: 60px;
-    padding: 5px;
+    min-height: 130px;
+    max-height: 130px;
+    padding: 3px;
+
+    background: rgba(241, 241, 241, 0.689);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
 }
 
-.minharede .sec2 .resultados .usuario p {
+.minharede .sec2 .resultados .usuario > .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.minharede .sec2 .resultados .usuario img {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+}
+
+.minharede .sec2 .resultados .usuario .nome  {
     font-size: .8em;
-    margin: auto;
+    width: 100%;
+    margin-right: 5px;
+}
+
+.minharede .sec2 .resultados .usuario .sobremim {
+    font-size: 60%;
+    max-height: 30px;
+    min-height: 30px;
 }
 
 .minharede .sec2 .resultados .usuario input {
     border-radius: 25px;
+    width:  90%;
     padding: 2px;
     color: black;
     border: 0.1px solid var(--principal);
@@ -1063,7 +1099,8 @@
 }
 
 .minharede .sec2 .resultados .usuario input:hover {
-    background-color: rgb(215, 215, 215);
+    background-color: var(--principal);
+    color: white;
 
     transition: .3s;
 }

@@ -12,13 +12,13 @@
                         group
                     </span>Minha rede</a></li>
         </ul>
-        <form action="/minharede?tip=usuarios" method="get">
+        <div class="form">
             <input id="pesquisar_campo" type="text" placeholder="Pesquisar">
 
             <ul id="pesquisar_lista">
-                <li><input type="submit" value="Pesquisar por usuarios"></li>
-                <li><input type="submit" value="Pesquisar por grupos"></li>
+                <li><input type="submit" onclick="pesquisarUsuarios()" value="Pesquisar por usuarios"></li>
+                <li><input id="pesquisaGrupo" onclick="pesquisarGrupos()" type="submit" value="Pesquisar por grupos"></li>
             </ul>
-        </form>
+        </div>
     </div>
 </header>
