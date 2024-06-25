@@ -79,11 +79,3 @@ create table tb_seguindo_grupos(
     foreign key (id_usuario) references tb_usuarios(id)
 );
 
-create table tb_pedidos_seguidores_pendentes(
-    id int primary key auto_increment,
-    id_usuario_pediu int not null,
-    id_usuario_requisitado int not null,
-
-    foreign key (id_usuario_pediu) references tb_usuarios(id),
-    foreign key (id_usuario_requisitado) references tb_usuarios(id)
-)
