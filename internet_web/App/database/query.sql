@@ -4,7 +4,8 @@ create table tb_usuarios(
     senha varchar(32) not null,
     email varchar(200) not null,
     sobremim varchar(200) default'sem descrição',
-    fotoperfil varchar(200)
+    fotoperfil varchar(200),
+    administrador boolean
 );
 
 create table tb_seguidores(
