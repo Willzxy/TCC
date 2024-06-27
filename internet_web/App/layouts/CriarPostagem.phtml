@@ -1,17 +1,56 @@
 <div class="criar">
-    <div class="criacao">
-        <div class="fotoperfil"></div>
-        <textarea placeholder="Sobre oque você quer falar hoje?" name="" id="" cols="30" rows="10"></textarea>
-    </div>
-    <ul>
-        <li id="midia_bt"><input accept="image/*" type="file"></li>
-        <li id="privacidade_bt">
-            <select name="" id="">
-                <option value="0">Publico alvo</option>
-                <option value="1">Meu perfil</option>
-            </select>
-        </li>
+    <form action="" method="post">
+        <div class="criacao">
+            <div class="fotoperfil"></div>
+            <textarea placeholder="Sobre oque você quer falar hoje?" name="" id="conteudo" cols="30" rows="10"></textarea>
+        </div>
+        <div id="postagem_template"></div>
+        <ul>
+            <li id="midia_bt"><input id="image" accept="image/*" type="file"></li>
+            <li id="privacidade_bt">
+                <select name="" id="">
+                    <option value="0">Publico alvo</option>
+                    <option value="1">Meu perfil</option>
+                </select>
+            </li>
 
-        <li id="postar_bt">Postar</li>
-    </ul>
+            <li><input id="postar_bt" type="submit" value="Postar"></li>
+        </ul>
+    </form>
+
+    <script>
+         document.getElementById('image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'Uploaded Image';
+                    img.style.maxWidth = '100%';
+
+                    const postagemTemplate = document.getElementById('postagem_template');
+                    postagemTemplate.appendChild(img);
+
+                    // Remove o input do ul
+                    const input = document.getElementById('midia_bt');
+                    const ul = input.parentNode.parentNode;
+                    input.parentNode.removeChild(input);
+
+                    // Cria um novo input escondido
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'file';
+                    hiddenInput.accept = 'image/*';
+                    hiddenInput.classList.add('hidden');
+                    hiddenInput.files = event.target.files;
+
+                    ul.parentNode.insertBefore(hiddenInput, ul.nextSibling);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </div>

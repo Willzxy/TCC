@@ -70,13 +70,3 @@ create table tb_grupos(
     nome varchar(200) not null,
     descricao varchar(400)
 );
-
-create table tb_seguindo_grupos(
-	id int primary key auto_increment,
-    id_grupo int not null,
-    id_usuario int not null,
-    
-    foreign key (id_grupo) references tb_grupos(id),
-    foreign key (id_usuario) references tb_usuarios(id)
-);
-

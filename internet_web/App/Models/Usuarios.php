@@ -68,7 +68,7 @@ class Usuarios extends Models  {
 
     function procurarUsuarios($procurar){
         $procurar = '%' . $procurar . '%';
-        $query = 'select id, nome, sobremim from tb_usuarios where email != ? and nome like ? limit 25;';
+        $query = 'select id, nome, sobremim from tb_usuarios where administrador = false and email != ? and nome like ? limit 25;';
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $this->__get('email'), $procurar);
