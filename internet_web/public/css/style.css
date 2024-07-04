@@ -828,6 +828,23 @@
     background-color: rgba(169, 169, 169, 0.281);
 }
 
+.perfil .conteudo .informacoes .deletar {
+    border-radius: 15px;
+    padding: 5px;
+
+    color: white;
+    border: none;
+    background-color: rgb(134, 14, 14);
+    cursor: pointer;
+
+    transition: .5s;
+}
+
+.perfil .conteudo .informacoes .deletar:hover {
+    background-color: rgb(64, 8, 8);
+    transition: .5s;
+}
+
 .perfil .conteudo .informacoes .s2 a {
     font-size: 1em;
     font-weight: 600;

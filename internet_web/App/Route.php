@@ -64,6 +64,14 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        $routes['deletarpostagem'] = array(
+            'route' => '/deletarpostagem',
+            'controller' => 'PerfilController',
+            'action' => 'deletarpostagem',
+            'name' => 'deletarpostagem',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
         $routes['criarpostagem'] = array(
             'route' => '/criarpostagem',
             'controller' => 'TimelineController',

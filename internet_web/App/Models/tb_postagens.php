@@ -61,7 +61,7 @@ class tb_postagens extends Models {
 
     public function listar_postagens($id_usuario){
         $query = "
-            SELECT p.*, u.nome as nome_usuario, u.sobremim as sobre_usuario
+            SELECT p.*, u.nome as nome_usuario, u.email as email, u.sobremim as sobre_usuario
             FROM tb_postagens p
             JOIN tb_usuarios u ON p.id_usuario = u.id
             WHERE p.id_usuario = ?
@@ -81,12 +81,22 @@ class tb_postagens extends Models {
         return $postagens;
     }
 
+    public function apagar_postagem(){
+        $query = "
+            DELETE FROM tb_postagens WHERE id = ?;
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $this->__get('id'));
+        $stmt->execute();
+    }
+
     public function atualizar_timeline($id_usuario){
         $query = "
             SELECT p.*, u.nome as nome_usuario, u.sobremim as sobre_usuario
             FROM tb_postagens p
             JOIN tb_usuarios u ON p.id_usuario = u.id
-            WHERE p.id_usuario != ?
+            WHERE p.privacidade = 'publico' AND p.id_usuario != ?
             ORDER BY p.data_postagem DESC;
         ";
 
@@ -101,5 +111,20 @@ class tb_postagens extends Models {
         }
 
         return $postagens;
+    }
+
+    public function quantidade_postagem($id_usuario){
+        $query = "
+        SELECT COUNT(*) as numero_de_postagens
+        FROM tb_postagens
+        WHERE id_usuario = ?;
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id_usuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc()['numero_de_postagens'];
     }
 }

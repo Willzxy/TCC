@@ -8,7 +8,15 @@ foreach ($temp as $key => $value) { ?>
                 <p><?php echo $value['sobre_usuario'] ?></p>
             </div>
             <div class="s3">
-                <button>•••</button>
+                <?php
+                    if($value['email'] == $_SESSION['email']){ ?>
+                        <form action="/deletarpostagem" method="post">
+                            <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
+                            <input class="deletar" type="submit" value="Apagar postagem">
+                        </form>
+                <?php } else { ?>
+                        <button>•••</button>
+                <?php } ?>
             </div>
         </div>
         <p class="descricao"> <?php echo $value['descricao'] ?> </p>

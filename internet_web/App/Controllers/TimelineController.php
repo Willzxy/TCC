@@ -17,6 +17,7 @@ class TimelineController extends Action {
 
         $id = $usuarios->buscarID($_SESSION['email']);
         $this->view->timeline = $postagens->atualizar_timeline($id);
+        $this->view->quantidade_postagens = $postagens->quantidade_postagem($id);
 
         $this->render('autenticado.timeline');
     }

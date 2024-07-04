@@ -25,6 +25,14 @@ class PerfilController extends Action {
         $this->redirect('/perfil');
     }
 
+    public function deletarpostagem(){
+        $postagens = new tb_postagens;
+        $postagens->__set('id', $_POST['id']);
+        $postagens->apagar_postagem();
+
+        $this->redirect('/perfil');
+    }
+
     public function perfil(){
         $usuarios = new tb_usuarios;
         $postagens = new tb_postagens;
