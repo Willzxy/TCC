@@ -1,16 +1,16 @@
 <div class="criar">
-    <form action="" method="post">
+    <form action="/criarpostagem" enctype="multipart/form-data" method="post">
         <div class="criacao">
             <div class="fotoperfil"></div>
-            <textarea placeholder="Sobre oque você quer falar hoje?" name="" id="conteudo" cols="30" rows="10"></textarea>
+            <textarea placeholder="Sobre oque você quer falar hoje?" required name="texto" id="conteudo" cols="30" rows="10"></textarea>
         </div>
         <div id="postagem_template"></div>
         <ul>
-            <li id="midia_bt"><input id="image" accept="image/*" type="file"></li>
+            <li id="midia_bt"><input id="image" name="imagem" accept="image/*" type="file"></li>
             <li id="privacidade_bt">
-                <select name="" id="">
-                    <option value="0">Publico alvo</option>
-                    <option value="1">Meu perfil</option>
+                <select name="privacidade" id="">
+                    <option value="publica">Publico</option>
+                    <option value="privada">Privado</option>
                 </select>
             </li>
 
@@ -19,37 +19,39 @@
     </form>
 
     <script>
-         document.getElementById('image').addEventListener('change', function(event) {
-            const file = event.target.files[0];
+        document.getElementById('image').addEventListener('change', function(event) {
+            if (!document.getElementById('imagemtemplate')) {
+                const file = event.target.files[0];
 
-            if (file) {
-                const reader = new FileReader();
+                if (file) {
+                    const reader = new FileReader();
 
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = 'Uploaded Image';
-                    img.style.maxWidth = '100%';
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.alt = 'Uploaded Image';
+                        img.style.maxWidth = '100%';
+                        img.id = 'imagemtemplate';
 
-                    const postagemTemplate = document.getElementById('postagem_template');
-                    postagemTemplate.appendChild(img);
+                        const postagemTemplate = document.getElementById('postagem_template');
+                        postagemTemplate.appendChild(img);
+                    };
 
-                    // Remove o input do ul
-                    const input = document.getElementById('midia_bt');
-                    const ul = input.parentNode.parentNode;
-                    input.parentNode.removeChild(input);
+                    reader.readAsDataURL(file);
+                }
 
-                    // Cria um novo input escondido
-                    const hiddenInput = document.createElement('input');
-                    hiddenInput.type = 'file';
-                    hiddenInput.accept = 'image/*';
-                    hiddenInput.classList.add('hidden');
-                    hiddenInput.files = event.target.files;
+            } else {
+                const file = event.target.files[0]; // Adicionando essa linha
+                if (file) { // Verificação adicional para segurança
+                    const reader = new FileReader();
 
-                    ul.parentNode.insertBefore(hiddenInput, ul.nextSibling);
-                };
+                    reader.onload = function(e) {
+                        const img = document.getElementById('imagemtemplate');
+                        img.src = e.target.result;
+                    };
 
-                reader.readAsDataURL(file);
+                    reader.readAsDataURL(file); // Chamando o método aqui
+                }
             }
         });
     </script>

@@ -6,7 +6,7 @@ require_once '../MinhaFramework/Models/Models.php';
 
 use MF\Models;
 
-class Usuarios extends Models  {
+class tb_usuarios extends Models  {
     private $id;
     private $nome;
     private $senha;

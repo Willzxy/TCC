@@ -1,0 +1,30 @@
+<?php 
+foreach ($temp as $key => $value) { ?>
+    <div class="conteudo">
+        <div class="informacoes">
+            <img src="../img/PerfilVazia.jpg" alt="" class="fotoperfil">
+            <div class="s2">
+                <a href="#"> <?php echo $value['nome_usuario'] ?> </a>
+                <p><?php echo $value['sobre_usuario'] ?></p>
+            </div>
+            <div class="s3">
+                <button>•••</button>
+            </div>
+        </div>
+        <p class="descricao"> <?php echo $value['descricao'] ?> </p>
+        <?php
+            if($value['imagem'] != 'sem imagem'){ ?> 
+                <img src="../img/teste.png" alt="Conteudo se tiver">
+        <?php } ?>
+        <div class="acoes">
+            <button><span class="material-symbols-outlined">
+                    thumb_up
+                </span> Curtir</button>
+            <button><span class="material-symbols-outlined">
+                    comment
+                </span> Comentar</button>
+        </div>
+        
+    </div>
+
+<?php } ?>

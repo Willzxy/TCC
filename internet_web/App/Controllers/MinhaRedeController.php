@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 require_once '../MinhaFramework/Controllers/action.php';
-require_once '../App/Models/Usuarios.php';
+require_once '../App/Models/tb_usuarios.php';
 
-use App\Models\Usuarios;
+use App\Models\tb_usuarios;
 use MF\Action;
 
 class MinhaRedeController extends Action {
@@ -20,7 +20,7 @@ class MinhaRedeController extends Action {
         switch ($tip) {
             case 'usuarios':
                 $pesquisar = $_GET['search'];
-                $usuarios = new Usuarios;
+                $usuarios = new tb_usuarios;
 
                 $usuarios->__set('email', $_SESSION['email']);
                 $this->view->usuarios = $registros = $usuarios->procurarUsuarios($_GET['search']);

@@ -20,7 +20,8 @@ abstract class Action{
         header("location: $route");
     }
 
-    function layout($name){
+    function layout($name, $var2=null){
+        $temp = $var2;
         include_once "../App/Layouts/$name.phtml";
     }
 

@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 require_once '../MinhaFramework/Controllers/action.php';
-require_once '../App/Models/Usuarios.php';
+require_once '../App/Models/tb_usuarios.php';
 
-use App\Models\Usuarios;
+use App\Models\tb_usuarios;
 use MF\Action;
 
 class IndexController extends Action {

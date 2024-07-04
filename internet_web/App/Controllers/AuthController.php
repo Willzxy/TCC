@@ -3,16 +3,16 @@
 namespace App\Controllers;
 
 require_once '../MinhaFramework/Controllers/action.php';
-require_once '../App/Models/Usuarios.php';
+require_once '../App/Models/tb_usuarios.php';
 
-use App\Models\Usuarios;
+use App\Models\tb_usuarios;
 use MF\Action;
 
 class AuthController extends Action {
     public function cadastrar(){
         $debug = $this->validarDados($_POST['nome'], $_POST['senha'], $_POST['email']);
 
-        $classe = new Usuarios();
+        $classe = new tb_usuarios();
         $classe->__set('email', $_POST['email']);
 
         $verificar_email = $classe->verificar_email();
@@ -40,7 +40,7 @@ class AuthController extends Action {
     public function autenticar(){
         $senhaMD5 = md5($_POST['senha']);
 
-        $classe = new Usuarios();
+        $classe = new tb_usuarios();
 
         $classe->__set('email', $_POST['email']);
         $classe->__set('senha', $senhaMD5);

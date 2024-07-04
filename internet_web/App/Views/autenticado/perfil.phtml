@@ -15,7 +15,9 @@
             <?php $this->layout('InformacoesPerfil') ?>
 
             <div class="exibir_conteudos">
-                
+                <?php 
+                    $this->layout('ListarPostagens', $this->view->minhas_postagens);
+                ?>
             </div>
         </div>
 
