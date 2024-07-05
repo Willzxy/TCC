@@ -17,6 +17,5 @@ abstract class Connection {
             echo $th;
             echo 'tem parada errada ai';
         }
-
     }
 }

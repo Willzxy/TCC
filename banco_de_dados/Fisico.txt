@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS tb_pedidos_seguidores_pendentes;
 DROP TABLE IF EXISTS tb_grupos;
 DROP TABLE IF EXISTS tb_usuarios;
 
-CREATE TABLE tb_usuarios (
+CREATE TABLE tb_usuarios ( 
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     senha VARCHAR(32) NOT NULL,
