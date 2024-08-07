@@ -1,0 +1,38 @@
+<?php 
+foreach ($temp as $key => $value) { ?>
+    <div class="conteudo">
+        <div class="informacoes">
+            <img src="../img/PerfilVazia.jpg" alt="" class="fotoperfil">
+            <div class="s2">
+                <a href="#"> <?php echo $value['nome_usuario'] ?> </a>
+                <p><?php echo $value['sobre_usuario'] ?></p>
+            </div>
+            <div class="s3">
+                <?php
+                    if($value['email'] == $_SESSION['email']){ ?>
+                        <form action="/deletarpostagem" method="post">
+                            <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
+                            <input class="deletar" type="submit" value="Apagar postagem">
+                        </form>
+                <?php } else { ?>
+                        <button>•••</button>
+                <?php } ?>
+            </div>
+        </div>
+        <p class="descricao"> <?php echo $value['descricao'] ?> </p>
+        <?php
+            if($value['imagem'] != 'sem imagem'){ ?> 
+                <img src="../img/teste.png" alt="Conteudo se tiver">
+        <?php } ?>
+        <div class="acoes">
+            <button><span class="material-symbols-outlined">
+                    thumb_up
+                </span> Curtir</button>
+            <button><span class="material-symbols-outlined">
+                    comment
+                </span> Comentar</button>
+        </div>
+        
+    </div>
+
+<?php } ?>
