@@ -38,6 +38,11 @@
                     </div>
 
                     <?php
+                    if (isset($_GET['erro']) && $_GET['erro'] == 1) { ?>
+                        <p id="errorform"> Um link para redefinir sua senha foi enviado em seu email. </p>
+                    <?php } ?>
+
+                    <?php
                     if ($_GET['login'] == 3) { ?>
                         <a id="esquecisenha">Esqueceu sua senha?? Clique aqui!</a>
                     <?php } ?>
@@ -50,7 +55,7 @@
         </div>
 
         <div style="display: none;" id="redefinir">
-        <form class="autenticar" action="/recuperarsenha" method="post">
+            <form class="autenticar" action="/recuperarsenha" method="post">
                 <p>Redefinir senha</p>
                 <div class="border">
                     <div class="inputs">
@@ -76,12 +81,15 @@
                     </div>
 
                     <?php
-                    if (isset($_GET['login']) && $_GET['login'] == 1) { ?>
-                        <p id="errorform">Revise seus dados dentro dos campos.</p>
-                    <?php } elseif (isset($_GET['login']) && $_GET['login'] == 2) { ?>
-                        <p id="errorform">Email já cadastrado.</p>
+                    if (isset($_GET['login'])) {
+                        if ($_GET['login'] == 1) { ?>
+                            <p id="errorform">Revise seus dados dentro dos campos.</p>
+                        <?php } elseif ($_GET['login'] == 2) { ?>
+                            <p id="errorform">Email já cadastrado.</p>
                     <?php }
-                    ?>
+                    } ?>
+
+
 
                     <input id="cadastrar" type="submit" value="Cadastrar">
                     <a href="#" id="link_registrar">Já tem uma conta? clique aqui!</a>

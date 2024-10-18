@@ -25,7 +25,8 @@ class tb_usuarios extends Models
         return $this->$attr;
     }
 
-    function atualizarSenha(){
+    function atualizarSenha()
+    {
         $query = "
             UPDATE tb_usuarios
             SET senha = MD5(?)
@@ -33,7 +34,7 @@ class tb_usuarios extends Models
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss",$this->__get('senha') ,$this->__get('id'));
+        $stmt->bind_param("ss", $this->__get('senha'), $this->__get('id'));
         $stmt->execute();
     }
 
@@ -87,10 +88,37 @@ class tb_usuarios extends Models
     function procurarUsuarios($procurar)
     {
         $procurar = '%' . $procurar . '%';
-        $query = 'select id, nome, sobremim from tb_usuarios where administrador = false and email != ? and nome like ? limit 25;';
+        $query = "
+             SELECT 
+                u.id, 
+                u.nome, 
+                u.sobremim, 
+                CASE 
+                    WHEN p.id_usuario_pedido IS NOT NULL THEN 'pedido_pendente'
+                    ELSE 'sem_pedido'
+                END AS status_pedido
+            FROM 
+                tb_usuarios u
+            LEFT JOIN 
+                tb_pedidos_seguidores_pendentes p 
+                ON u.id = p.id_usuario_requisitado 
+                AND p.id_usuario_pedido = ?  
+            WHERE 
+                u.administrador = false 
+                AND u.email != ? 
+                AND u.nome LIKE ?
+                AND u.id NOT IN (
+                    SELECT id_usuario_seguindo 
+                    FROM tb_seguidores 
+                    WHERE id_usuario = ?
+                )
+            LIMIT 25;
+
+
+        ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss", $this->__get('email'), $procurar);
+        $stmt->bind_param("issi", $this->__get('id'), $this->__get('email'), $procurar, $this->__get('id'));
         $stmt->execute();
 
         $results = $stmt->get_result();

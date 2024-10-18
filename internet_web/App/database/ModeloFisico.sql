@@ -17,10 +17,9 @@ CREATE TABLE tb_usuarios (
     sobremim VARCHAR(200) DEFAULT 'sem descrição',
     fotoperfil VARCHAR(200) DEFAULT 'sem foto',
     token VARCHAR(200) DEFAULT NULL,
-    token_validade DATE DEFAULT NULL,
-    administrador BOOLEAN DEFAULT FALSE,
-    
-    CHECK (LENGTH(senha) = 32)
+    token_validade_hora TIME DEFAULT NULL,
+    token_validade_data DATE DEFAULT NULL,
+    administrador BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE tb_seguidores (
@@ -108,7 +107,7 @@ CREATE TABLE tb_seguindo_grupos (
 );
 
 INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('admin', MD5('admin12345'), 'admin@gmail.com', 'Administrador do sistema', TRUE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian', MD5('senha123'), 'willian@gmail.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian carlos', MD5('senha123'), 'w2569129@gmail.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
 INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Maria Oliveira', MD5('senha123'), 'maria.oliveira@gmail.com', 'Entusiasta de livros e viagens.', FALSE);
 INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Carlos Santos', MD5('senha123'), 'carlos.santos@gmail.com', 'Engenheiro com interesse em astronomia.', FALSE);
 INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Ana Costa', MD5('senha123'), 'ana.costa@gmail.com', 'Amante de culinária e artes.', FALSE);

@@ -1,3 +1,28 @@
+<div class="pesquisa">
+    <form action="/pesquisar">
+        <input type="hidden" name="tip" value='solicitacoes'>
+        <input name="search" type="text">
+        <input type="submit" value="Pesquisar">
+    </form>
+</div>
+
 <div class="resultados">
-    <h1>Minhas solicitações</h1>
+    <?php
+    if (isset($this->view->solicitacoes)) {
+        foreach ($this->view->solicitacoes as $key => $value) { ?>
+            <form id="usuario<?php echo $key ?>" class="usuario" action="/aceitarpedido?usuario=<?php echo $value['id_usuario_pedido'] ?>" method="post">
+                <div class="bar">
+                    <img src="../img/PerfilVazia.jpg" alt="">
+                    <p class="nome"><?php print($value['nome_usuario_pedido']) ?></p>
+                </div>
+
+                <p class="sobremim"><?php print($value['sobremim_usuario_pedido']) ?></p>
+
+                <input type="submit" value="Aceitar pedido para seguir">
+            </form>
+    <?php }
+    } else {
+        echo "<h1 style='text-align: center;'> Pesquisar quem está querendo me seguir </h1>";
+    }
+    ?>
 </div>

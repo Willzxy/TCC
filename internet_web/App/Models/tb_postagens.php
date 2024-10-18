@@ -93,11 +93,24 @@ class tb_postagens extends Models {
 
     public function atualizar_timeline($id_usuario){
         $query = "
-            SELECT p.*, u.nome as nome_usuario, u.sobremim as sobre_usuario
-            FROM tb_postagens p
-            JOIN tb_usuarios u ON p.id_usuario = u.id
-            WHERE p.privacidade = 'publico' AND p.id_usuario != ?
-            ORDER BY p.data_postagem DESC;
+            SELECT 
+                p.*, 
+                u.nome AS nome_usuario, 
+                u.sobremim AS sobre_usuario
+            FROM 
+                tb_postagens p
+            JOIN 
+                tb_usuarios u ON p.id_usuario = u.id
+            WHERE 
+                p.privacidade = 'publico' 
+                AND u.id IN (
+                    SELECT id_usuario_seguindo 
+                    FROM tb_seguidores 
+                    WHERE id_usuario = ?
+                )
+            ORDER BY 
+                p.data_postagem DESC;
+
         ";
 
         $stmt = $this->db->prepare($query);

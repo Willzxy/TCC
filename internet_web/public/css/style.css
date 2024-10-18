@@ -1191,6 +1191,19 @@
     transition: .3s;
 }
 
+.minharede .sec2 .resultados .usuario  .solicitacao {
+    border-radius: 225px;
+    text-align: center;
+    width:  90%;
+    padding: 2px;
+    color: black;
+    border: 0.1px solid var(--principal);
+    cursor: pointer;
+    background-color: white;
+
+    transition: .3s;
+}
+
 .minharede .sec2 .resultados .usuario input:hover {
     background-color: var(--principal);
     color: white;

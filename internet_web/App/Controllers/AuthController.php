@@ -130,7 +130,7 @@ class AuthController extends Action {
             if($classe->verificarToken($token)){
                 $this->render('index.redefinirSenha');
             }else {
-                echo 'agora saimos aqui';
+
                 $this->redirect('/');
             }
         }else {
@@ -153,8 +153,9 @@ class AuthController extends Action {
                 $classe->atualizartoken($token);
 
                 $this->EnviarEmail($_POST['email'], $dados['nome'], $this->layout_return('EmailRedefinirSenha'));
+                $this->redirect('/?login=3&erro=1');
             } else {
-                echo 'saimos aqui';
+
                 $this->redirect('/');
             }
         }

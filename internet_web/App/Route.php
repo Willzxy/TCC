@@ -56,6 +56,23 @@ Class Route extends BootStrap {
             'middleware' => ''
         );
 
+        $routes['seguir'] = array(
+            'route' => '/seguir',
+            'controller' => 'MinhaRedeController',
+            'action' => 'pedirSeguir',
+            'name' => 'seguir',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['aceitarpedido'] = array(
+            'route' => '/aceitarpedido',
+            'controller' => 'MinhaRedeController',
+            'action' => 'aceitarpedido',
+            'name' => 'aceitarpedido',
+            'middleware' => 'VerificarAutenticacao'
+        );
+        
+
         $routes['timeline'] = array(
             'route' => '/timeline',
             'controller' => 'TimelineController',
