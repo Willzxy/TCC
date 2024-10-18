@@ -16,6 +16,14 @@ Class Route extends BootStrap {
             'middleware' => 'Administrador'
         );
 
+        $routes['recuperarsenha'] = array(
+            'route' => '/recuperarsenha',
+            'controller' => 'AuthController',
+            'action' => 'recuperarsenha',
+            'name' => 'recuperarsenha',
+            'middleware' => 'PermitirCadastro'
+        );
+
         $routes['home'] = array(
             'route' => '/',
             'controller' => 'IndexController',

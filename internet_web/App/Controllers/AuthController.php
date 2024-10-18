@@ -5,6 +5,11 @@ namespace App\Controllers;
 require_once '../MinhaFramework/Controllers/action.php';
 require_once '../App/Models/tb_usuarios.php';
 
+require '../MinhaFramework/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 use App\Models\tb_usuarios;
 use MF\Action;
 
@@ -62,6 +67,96 @@ class AuthController extends Action {
             }
         }else {
             $this->redirect('/?login=3');
+        }
+    }
+
+    public function EnviarEmail($email, $usuario, $conteudo){
+        $mail = new PHPMailer(true);
+    
+        try {
+            // Configurações do servidor
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';    // Servidor SMTP do Gmail
+            $mail->SMTPAuth   = true;                // Ativar autenticação SMTP
+            $mail->Username   = 'myfriendcircletcc@gmail.com'; // Seu endereço de e-mail Gmail
+            $mail->Password   = 'wkad qcyx nrmc kxmy';         // Sua senha do Gmail
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS
+            $mail->Port       = 587;                 // Porta para TLS
+    
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+    
+            // Remetente
+            $mail->setFrom('myfriendcircletcc@gmail.com', 'Serviço de Supor My Friend Circle');
+    
+            // Destinatário
+            $mail->addAddress($email, $usuario);
+    
+            // Conteúdo do e-mail
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';
+            $mail->Subject = 'Solicitação para redefinir sua senha';
+    
+            $mail->Body    = $conteudo;
+            $mail->AltBody = '<a href="localhost:8080/" id="textcolor" class="btn">Redefinir Senha</a>';
+    
+            // Enviar o e-mail
+            $mail->send();
+        } catch (Exception $e) {
+            echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
+        }
+    }
+
+    public function recuperarsenha(){
+        $classe = new tb_usuarios();
+
+        if(isset($_POST['tokenValidado'])){
+            $senha = $_POST['senha'];
+            $id = $classe->buscarID($_SESSION['email']);
+
+            $classe->__set('id', $id);
+            $classe->__set('senha', $senha);
+            $classe->atualizarSenha();
+
+            $this->redirect('/');
+        }else if(isset($_GET['token'])){
+            $token = $_GET['token'];
+
+            if($classe->verificarToken($token)){
+                $this->render('index.redefinirSenha');
+            }else {
+                echo 'agora saimos aqui';
+                $this->redirect('/');
+            }
+        }else {
+            $classe->__set('email', $_POST['email']);
+
+            $verificar_email = $classe->verificar_email();
+
+            if($verificar_email){
+                $id = $classe->buscarID($_POST['email']);
+                $dados = $classe->BuscarDados($id);
+
+                $classe->__set('id', $dados['id']);
+
+                $tokenTamanho = 200;
+                $token = substr(bin2hex(random_bytes($tokenTamanho / 2)), 0, $tokenTamanho);
+
+                $_SESSION['token'] = $token;
+                $_SESSION['email'] = $dados['email'];
+
+                $classe->atualizartoken($token);
+
+                $this->EnviarEmail($_POST['email'], $dados['nome'], $this->layout_return('EmailRedefinirSenha'));
+            } else {
+                echo 'saimos aqui';
+                $this->redirect('/');
+            }
         }
     }
 

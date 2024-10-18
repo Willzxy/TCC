@@ -10,7 +10,7 @@ class PermitirCadastro extends Action {
     public function action(){
         session_start();
 
-        if($_SESSION['administrador'] === 1 ){
+        if(isset($_SESSION['administrador']) && $_SESSION['administrador'] === 1 ){
             $this->redirect('/admin');
         }
 

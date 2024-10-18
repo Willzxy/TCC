@@ -6,7 +6,8 @@ require_once '../MinhaFramework/Models/Models.php';
 
 use MF\Models;
 
-class tb_usuarios extends Models  {
+class tb_usuarios extends Models
+{
     private $id;
     private $nome;
     private $senha;
@@ -14,15 +15,30 @@ class tb_usuarios extends Models  {
     private $sobremim;
     private $foto_perfil;
 
-    function __set($attr1, $attr2){
+    function __set($attr1, $attr2)
+    {
         $this->$attr1 = $attr2;
     }
 
-    function __get($attr){
+    function __get($attr)
+    {
         return $this->$attr;
     }
 
-    function cadastrar(){
+    function atualizarSenha(){
+        $query = "
+            UPDATE tb_usuarios
+            SET senha = MD5(?)
+            WHERE id = ?;
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss",$this->__get('senha') ,$this->__get('id'));
+        $stmt->execute();
+    }
+
+    function cadastrar()
+    {
         $query = "
             insert into tb_usuarios(nome, senha, email)values(
                 ?,
@@ -36,37 +52,40 @@ class tb_usuarios extends Models  {
         $stmt->execute();
     }
 
-    function verificar_email(){
+    function verificar_email()
+    {
         $query = "select * from tb_usuarios where email = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $this->__get('email'));
         $stmt->execute();
-        
+
         $results = $stmt->get_result();
         $registro = $results->fetch_assoc();
 
-        if($registro){
+        if ($registro) {
             return true;
         }
     }
 
-    function autenticar(){
+    function autenticar()
+    {
         $query = "select * from tb_usuarios where email = ? and senha = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $this->__get('email'), $this->__get('senha'));
         $stmt->execute();
-        
+
         $results = $stmt->get_result();
         $registro = $results->fetch_assoc();
 
-        if($registro){
+        if ($registro) {
             return true;
         }
     }
 
-    function procurarUsuarios($procurar){
+    function procurarUsuarios($procurar)
+    {
         $procurar = '%' . $procurar . '%';
         $query = 'select id, nome, sobremim from tb_usuarios where administrador = false and email != ? and nome like ? limit 25;';
 
@@ -76,7 +95,7 @@ class tb_usuarios extends Models  {
 
         $results = $stmt->get_result();
 
-       $registros = array();
+        $registros = array();
         while ($row = $results->fetch_assoc()) {
             array_push($registros, $row);
         }
@@ -84,7 +103,8 @@ class tb_usuarios extends Models  {
         return $registros;
     }
 
-    function atualizar_perfil(){
+    function atualizar_perfil()
+    {
         $query = "
         UPDATE tb_usuarios
         SET nome = ?, sobremim = ?
@@ -92,12 +112,13 @@ class tb_usuarios extends Models  {
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('id') );
+        $stmt->bind_param("sss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('id'));
         $stmt->execute();
     }
 
-    function AtualizarDadosSecao(){
-        session_start(); 
+    function AtualizarDadosSecao()
+    {
+        session_start();
         $id = $this->buscarID($_SESSION['email']);
         $dadosAtualizados = $this->BuscarDados($id);
 
@@ -106,13 +127,14 @@ class tb_usuarios extends Models  {
         $_SESSION['sobremim'] = $dadosAtualizados['sobremim'];
     }
 
-    function BuscarDados($id){
-        $query = "select nome, sobremim, email, administrador from tb_usuarios where id = ?;";
+    function BuscarDados($id)
+    {
+        $query = "select id, nome, sobremim, email, administrador from tb_usuarios where id = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $id);
         $stmt->execute();
-        
+
         $results = $stmt->get_result();
 
         while ($row = $results->fetch_assoc()) {
@@ -120,13 +142,52 @@ class tb_usuarios extends Models  {
         }
     }
 
-    function buscarID($email){
+    function verificarToken($token)
+    {
+        $query = "
+            SELECT id, nome, email, token, token_validade_data, token_validade_hora
+            FROM tb_usuarios
+            WHERE token = ? -- O token que você deseja verificar
+            AND token_validade_data >= CURDATE()
+            AND (token_validade_data > CURDATE() OR token_validade_hora >= CURTIME())
+            AND token_validade_data IS NOT NULL
+            AND token_validade_hora IS NOT NULL;
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+
+        $results = $stmt->get_result();
+
+        while ($row = $results->fetch_assoc()) {
+            return $row['id'];
+        }
+    }
+
+    function atualizartoken($token)
+    {
+        $query = "
+            UPDATE tb_usuarios
+            SET token = ?, 
+                token_validade_hora = TIME(NOW() + INTERVAL 5 MINUTE),
+                token_validade_data = CURDATE()
+            WHERE id = ?; 
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $token, $this->__get('id'));
+        $stmt->execute();
+    }
+
+    function buscarID($email)
+    {
         $query = "select id from tb_usuarios where email = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        
+
         $results = $stmt->get_result();
 
         while ($row = $results->fetch_assoc()) {

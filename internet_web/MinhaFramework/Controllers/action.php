@@ -25,6 +25,13 @@ abstract class Action{
         include_once "../App/Layouts/$name.phtml";
     }
 
+    function layout_return($name){
+        ob_start();
+        
+        include "../App/Layouts/$name.phtml";
+        return ob_get_clean();
+    }
+
     function show($var){
         if(!isset($_SESSION[$var])){
             echo 'Variavel não encontrada na sessão';

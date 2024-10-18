@@ -9,14 +9,21 @@
 }
  
 :root {
-    --principal: rgb(245, 71, 36);
-    --principal_2: rgb(135, 44, 26);
+    --principal: #7ad266;
+    --principal_2: #659856;
     --textos2: rgb(215, 215, 215);
 }
+
+/*:root {
+ /*   --principal: rgb(245, 71, 36);
+ /*   --principal_2: rgb(135, 44, 26);
+ /*   --textos2: rgb(215, 215, 215);
+/*}
 
 /* estilos customizados */
 
 #errorform {
+    margin-bottom: 10px;
     font-size: .8em;
     color: red;
 
@@ -32,7 +39,29 @@
 }
 
 #logomarca span {
-    color: rgb(245, 71, 36);
+    color: var(--principal);
+}
+
+#esquecisenha {
+    display: block;
+    padding: 10px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 60%;
+    font-size: .9em;
+
+    border-radius: 15px;
+    border: none;
+    background-color: var(--principal);
+    color: white;
+    cursor: pointer;
+}
+
+/* Pagina Recueprar Senha */
+
+.recuperarSenha {
+    background-color: rgb(215, 215, 215);
 }
 
 /* Pagina Autenticacao */
@@ -157,6 +186,7 @@
     border: none;
     background-color: var(--principal);
     color: white;
+    cursor: pointer;
 }
 
 .body-registrar .formulario .autenticar a, .body-registrar .formulario .registrar a {
@@ -327,7 +357,7 @@
     height: 50px;
 
     border-radius: 10px 10px 0px 0px;
-    background-color: rgb(245, 71, 36);
+    background-color:  var(--principal);
 }
 
 .timeline .n1 .perfil .fotodeperfil {

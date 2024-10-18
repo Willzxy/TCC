@@ -10,7 +10,7 @@
 
 <body class="body-registrar">
     <div class="info">
-    
+
         <div class="descricao">
             <h1 id="logomarca">Friend<span>Circle</span></h1>
             <p>
@@ -33,38 +33,55 @@
                 <p>Acesse sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input required type="text" name="email" id="email" placeholder="Digite seu e-mail">
-                        <input required minlength="8" maxlength="32" type="password" placeholder="Digite sua senha" name="senha">
+                        <input <?php if ($_GET['login'] == 3) { ?> style="border: 1px solid red;" <?php } ?> required type="text" name="email" id="email" placeholder="E-mail">
+                        <input <?php if ($_GET['login'] == 3) { ?> style="border: 1px solid red;" <?php } ?> required minlength="8" maxlength="32" type="password" placeholder="Senha" name="senha">
                     </div>
 
                     <?php
-                        if($_GET['login'] == 3) { ?>
-                            <p id="errorform">Ocorreu um erro durante a autenticação, tente novamente.</p>
+                    if ($_GET['login'] == 3) { ?>
+                        <a id="esquecisenha">Esqueceu sua senha?? Clique aqui!</a>
                     <?php } ?>
 
                     <input id="entrar" type="submit" value="Entrar">
+
                     <a href="#" id="link_autenticar">Não tem uma conta? clique aqui!</a>
                 </div>
             </form>
         </div>
 
+        <div style="display: none;" id="redefinir">
+        <form class="autenticar" action="/recuperarsenha" method="post">
+                <p>Redefinir senha</p>
+                <div class="border">
+                    <div class="inputs">
+                        <input required name="email" type="text" placeholder="E-mail">
+                    </div>
+
+                    <input id="entrar" type="submit" value="Enviar Link">
+
+                    <a href="#" id="link_autenticar">lembrou da senha? clique aqui!</a>
+                </div>
+            </form>
+        </div>
+
         <div style="display: block;" id="registrar">
-            <form class="registrar" action="/cadastrar" method="post">
+            <form class="registrar" action="/cadastrar" id="form_registro" method="post">
                 <p>Crie sua conta</p>
                 <div class="border">
                     <div class="inputs">
-                        <input required maxlength="40" name="nome" type="text" placeholder="Nome de usuario">
-                        <input required maxlength="200" name="email" type="email" placeholder="Digite seu email">
-                        <input required minlength="8" maxlength="32" name="senha" type="password" name="senha" placeholder="Digite sua senha">
+                        <input required maxlength="40" name="nome" type="text" placeholder="Usuario">
+                        <input required maxlength="200" name="email" type="email" placeholder="E-mail">
+                        <input required minlength="8" maxlength="32" id="senha" name="senha" type="password" placeholder="Senha">
+                        <input required minlength="8" maxlength="32" id="confirmar_senha" name="confirmar_senha" type="password" placeholder="Confirmar senha">
                     </div>
-                    
+
                     <?php
-                        if($_GET['login'] == 1) { ?>
-                            <p id="errorform">Revise seus dados dentro dos campos.</p>
-                    <?php } elseif($_GET['login'] == 2) { ?> 
-                            <p id="errorform">Email já cadastrado.</p>
+                    if (isset($_GET['login']) && $_GET['login'] == 1) { ?>
+                        <p id="errorform">Revise seus dados dentro dos campos.</p>
+                    <?php } elseif (isset($_GET['login']) && $_GET['login'] == 2) { ?>
+                        <p id="errorform">Email já cadastrado.</p>
                     <?php }
-                     ?>
+                    ?>
 
                     <input id="cadastrar" type="submit" value="Cadastrar">
                     <a href="#" id="link_registrar">Já tem uma conta? clique aqui!</a>
@@ -75,4 +92,5 @@
 
     <script src="Js/VerificarCadastro.js"></script>
 </body>
+
 </html>

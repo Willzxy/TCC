@@ -16,7 +16,10 @@ CREATE TABLE tb_usuarios (
     email VARCHAR(200) NOT NULL,
     sobremim VARCHAR(200) DEFAULT 'sem descrição',
     fotoperfil VARCHAR(200) DEFAULT 'sem foto',
+    token VARCHAR(200) DEFAULT NULL,
+    token_validade DATE DEFAULT NULL,
     administrador BOOLEAN DEFAULT FALSE,
+    
     CHECK (LENGTH(senha) = 32)
 );
 
@@ -104,13 +107,12 @@ CREATE TABLE tb_seguindo_grupos (
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id)
 );
 
-
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('admin', MD5('admin'), 'admin@example.com', 'Administrador do sistema', TRUE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian', MD5('senha123'), 'willian.silva@example.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Maria Oliveira', MD5('senha123'), 'maria.oliveira@example.com', 'Entusiasta de livros e viagens.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Carlos Santos', MD5('senha123'), 'carlos.santos@example.com', 'Engenheiro com interesse em astronomia.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Ana Costa', MD5('senha123'), 'ana.costa@example.com', 'Amante de culinária e artes.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Paulo Lima', MD5('senha123'), 'paulo.lima@example.com', 'Aficionado por esportes e investimentos.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('admin', MD5('admin12345'), 'admin@gmail.com', 'Administrador do sistema', TRUE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian', MD5('senha123'), 'willian@gmail.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Maria Oliveira', MD5('senha123'), 'maria.oliveira@gmail.com', 'Entusiasta de livros e viagens.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Carlos Santos', MD5('senha123'), 'carlos.santos@gmail.com', 'Engenheiro com interesse em astronomia.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Ana Costa', MD5('senha123'), 'ana.costa@gmail.com', 'Amante de culinária e artes.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Paulo Lima', MD5('senha123'), 'paulo.lima@gmail.com', 'Aficionado por esportes e investimentos.', FALSE);
 
 INSERT INTO tb_postagens (id_usuario, descricao, privacidade, data_postagem) 
 VALUES 

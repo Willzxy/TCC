@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friend Circle | Redefinir Senha</title>
+</head>
+<body id="redefinir">
+    <form action="/recuperarsenha" method="post">
+        <input type="hidden" name="tokenValidado" value="<?php $_GET['token']?>"> 
+        <input type="text" name="senha" placeholder="Nova Senha">
+        <input type="submit" value="Alterar senha">
+    </form>
+</body>
+</html>
