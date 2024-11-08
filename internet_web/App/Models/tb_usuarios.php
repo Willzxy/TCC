@@ -14,6 +14,10 @@ class tb_usuarios extends Models
     private $email;
     private $sobremim;
     private $foto_perfil;
+    private $administrador;
+    private $token;
+    private $token_validade;
+    private $ativo;
 
     function __set($attr1, $attr2)
     {

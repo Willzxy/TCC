@@ -1233,8 +1233,8 @@
     justify-content: space-around;
     flex-direction: column;
 
+    padding: 10px;
     width:  50%;
-    height: 200px;
 
     background-color: var(--principal_2);
     border-radius: 10px;
@@ -1261,6 +1261,7 @@
 
 #admin .sair {
     padding: 5px;
+    margin-top: 10px;
     width: 50%;
     display: block;
     background-color: rgb(139, 19, 19);
