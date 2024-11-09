@@ -9,15 +9,17 @@ DROP TABLE IF EXISTS tb_pedidos_seguidores_pendentes;
 DROP TABLE IF EXISTS tb_grupos;
 DROP TABLE IF EXISTS tb_usuarios;
 
-CREATE TABLE tb_usuarios ( 
+CREATE TABLE tb_usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     senha VARCHAR(32) NOT NULL,
     email VARCHAR(200) NOT NULL,
     sobremim VARCHAR(200) DEFAULT 'sem descrição',
     fotoperfil VARCHAR(200) DEFAULT 'sem foto',
-    administrador BOOLEAN DEFAULT FALSE,
-    CHECK (LENGTH(senha) = 32)
+    token VARCHAR(200) DEFAULT NULL,
+    token_validade_hora TIME DEFAULT NULL,
+    token_validade_data DATE DEFAULT NULL,
+    administrador BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE tb_seguidores (
@@ -47,7 +49,7 @@ CREATE TABLE tb_curtidas_postagens (
     id_postagem INT NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id)
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_comentarios_postagens (
@@ -58,7 +60,7 @@ CREATE TABLE tb_comentarios_postagens (
     data_postagem DATE NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id)
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_curtidas_comentarios (
@@ -67,7 +69,7 @@ CREATE TABLE tb_curtidas_comentarios (
     id_comentario INT NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_comentario) REFERENCES tb_comentarios_postagens(id)
+    FOREIGN KEY (id_comentario) REFERENCES tb_comentarios_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_denuncias (
@@ -75,7 +77,7 @@ CREATE TABLE tb_denuncias (
     id_postagem INT NOT NULL,
     id_usuario_denunciou INT NOT NULL,
     
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id),
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE,
     FOREIGN KEY (id_usuario_denunciou) REFERENCES tb_usuarios(id)
 );
 
@@ -104,13 +106,12 @@ CREATE TABLE tb_seguindo_grupos (
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id)
 );
 
-
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('admin', MD5('admin'), 'admin@example.com', 'Administrador do sistema', TRUE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian', MD5('senha123'), 'willian.silva@example.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Maria Oliveira', MD5('senha123'), 'maria.oliveira@example.com', 'Entusiasta de livros e viagens.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Carlos Santos', MD5('senha123'), 'carlos.santos@example.com', 'Engenheiro com interesse em astronomia.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Ana Costa', MD5('senha123'), 'ana.costa@example.com', 'Amante de culinária e artes.', FALSE);
-INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Paulo Lima', MD5('senha123'), 'paulo.lima@example.com', 'Aficionado por esportes e investimentos.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('admin', MD5('admin12345'), 'admin@gmail.com', 'Administrador do sistema', TRUE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('willian carlos', MD5('senha123'), 'w2569129@gmail.com', 'Desenvolvedor da rede social | FriendCircle', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Maria Oliveira', MD5('senha123'), 'maria.oliveira@gmail.com', 'Entusiasta de livros e viagens.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Carlos Santos', MD5('senha123'), 'carlos.santos@gmail.com', 'Engenheiro com interesse em astronomia.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Ana Costa', MD5('senha123'), 'ana.costa@gmail.com', 'Amante de culinária e artes.', FALSE);
+INSERT INTO tb_usuarios (nome, senha, email, sobremim, administrador) VALUES ('Paulo Lima', MD5('senha123'), 'paulo.lima@gmail.com', 'Aficionado por esportes e investimentos.', FALSE);
 
 INSERT INTO tb_postagens (id_usuario, descricao, privacidade, data_postagem) 
 VALUES 
@@ -151,3 +152,43 @@ VALUES
 (6, 'Visita ao museu de arte contemporânea foi inspiradora.', 'publico', '2024-06-25'),
 (6, 'Testando um novo aplicativo de gestão financeira. Parece promissor!', 'publico', '2024-06-24'),
 (6, 'Configurando meu novo smartwatch. Muitas funcionalidades úteis.', 'privado', '2024-06-23');
+
+INSERT INTO tb_seguidores (id_usuario, id_usuario_seguindo) VALUES 
+(1, 2),
+(2, 3),
+(3, 4);
+
+INSERT INTO tb_curtidas_postagens (id_usuario, id_postagem) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO tb_comentarios_postagens (id_usuario, id_postagem, comentario, data_postagem) VALUES 
+(1, 2, 'Ótima postagem!', '2024-06-27'),
+(2, 3, 'Concordo totalmente.', '2024-06-26'),
+(3, 1, 'Interessante ponto de vista.', '2024-06-25');
+
+INSERT INTO tb_curtidas_comentarios (id_usuario, id_comentario) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO tb_denuncias (id_postagem, id_usuario_denunciou) VALUES 
+(1, 3),
+(2, 1),
+(3, 2);
+
+INSERT INTO tb_grupos (nome, descricao) VALUES 
+('Grupo de Desenvolvedores', 'Grupo para discutir novas tecnologias'),
+('Leitores Ávidos', 'Amantes de livros de todos os tipos'),
+('Entusiastas de Esportes', 'Para todos que amam esportes');
+
+INSERT INTO tb_pedidos_seguidores_pendentes (id_usuario_pedido, id_usuario_requisitado) VALUES 
+(1, 2),
+(2, 3),
+(3, 1);
+
+INSERT INTO tb_seguindo_grupos (id_grupo, id_usuario) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);

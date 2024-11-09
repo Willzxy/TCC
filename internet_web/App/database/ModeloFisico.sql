@@ -49,7 +49,7 @@ CREATE TABLE tb_curtidas_postagens (
     id_postagem INT NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id)
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_comentarios_postagens (
@@ -60,7 +60,7 @@ CREATE TABLE tb_comentarios_postagens (
     data_postagem DATE NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id)
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_curtidas_comentarios (
@@ -69,7 +69,7 @@ CREATE TABLE tb_curtidas_comentarios (
     id_comentario INT NOT NULL,
     
     FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id),
-    FOREIGN KEY (id_comentario) REFERENCES tb_comentarios_postagens(id)
+    FOREIGN KEY (id_comentario) REFERENCES tb_comentarios_postagens(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_denuncias (
@@ -77,7 +77,7 @@ CREATE TABLE tb_denuncias (
     id_postagem INT NOT NULL,
     id_usuario_denunciou INT NOT NULL,
     
-    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id),
+    FOREIGN KEY (id_postagem) REFERENCES tb_postagens(id) ON DELETE CASCADE,
     FOREIGN KEY (id_usuario_denunciou) REFERENCES tb_usuarios(id)
 );
 
@@ -152,3 +152,43 @@ VALUES
 (6, 'Visita ao museu de arte contemporânea foi inspiradora.', 'publico', '2024-06-25'),
 (6, 'Testando um novo aplicativo de gestão financeira. Parece promissor!', 'publico', '2024-06-24'),
 (6, 'Configurando meu novo smartwatch. Muitas funcionalidades úteis.', 'privado', '2024-06-23');
+
+INSERT INTO tb_seguidores (id_usuario, id_usuario_seguindo) VALUES 
+(1, 2),
+(2, 3),
+(3, 4);
+
+INSERT INTO tb_curtidas_postagens (id_usuario, id_postagem) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO tb_comentarios_postagens (id_usuario, id_postagem, comentario, data_postagem) VALUES 
+(1, 2, 'Ótima postagem!', '2024-06-27'),
+(2, 3, 'Concordo totalmente.', '2024-06-26'),
+(3, 1, 'Interessante ponto de vista.', '2024-06-25');
+
+INSERT INTO tb_curtidas_comentarios (id_usuario, id_comentario) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO tb_denuncias (id_postagem, id_usuario_denunciou) VALUES 
+(1, 3),
+(2, 1),
+(3, 2);
+
+INSERT INTO tb_grupos (nome, descricao) VALUES 
+('Grupo de Desenvolvedores', 'Grupo para discutir novas tecnologias'),
+('Leitores Ávidos', 'Amantes de livros de todos os tipos'),
+('Entusiastas de Esportes', 'Para todos que amam esportes');
+
+INSERT INTO tb_pedidos_seguidores_pendentes (id_usuario_pedido, id_usuario_requisitado) VALUES 
+(1, 2),
+(2, 3),
+(3, 1);
+
+INSERT INTO tb_seguindo_grupos (id_grupo, id_usuario) VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
