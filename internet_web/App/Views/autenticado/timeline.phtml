@@ -16,20 +16,27 @@
             <section class="n1">
                 <div class="perfil">
                     <div class="outbar"></div>
-                    <img src="../img/PerfilVazia.jpg" class="fotodeperfil" alt="">
+                    <img src="../img/<?php echo $_SESSION['fotoperfil'] ?>" class="fotodeperfil" alt="">
                     <a href="#"> <?php $this->show('nome') ?> </a>
                     <p> <?php $this->show('sobremim') ?></p>
                     <ul>
-                        <li>Conexões: <span>0</span></li>
+                        <li>Conexões: <span><?php echo $this->view->quantidade_usuarios ?></span></li>
                         <li>Postagens: <span><?php echo $this->view->quantidade_postagens ?></span></li>
-                        <li>Curtidas: <span>0</span></li>
+                        <li>Curtidas: <span><?php echo $this->view->curtidas ?></span></li>
                     </ul>
                 </div>
 
                 <div class="grupos">
                     <p>Grupos seguindo</p>
                     <ul>
+                        <?php 
+                            foreach ($this->view->grupos_seguindo as $key => $value) {
+                                $nome = $value['nome_grupo'];
+                            ?>
 
+                                <p> <?php echo $nome ?> </p>
+
+                        <?php } ?>
                     </ul>
                 </div>
 

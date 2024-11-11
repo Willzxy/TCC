@@ -10,9 +10,21 @@
     <?php
     if (isset($this->view->usuarios)) {
         foreach ($this->view->usuarios as $key => $value) { ?>
-            <form id="usuario<?php echo $key ?>" class="usuario" action="/seguir?usuario=<?php echo $value['id']?>" method="post">
+           
+           <?php 
+                $action = $value['status_pedido'];
+                $id = $value["id"];
+
+                if($action === 'sem_pedido'){
+                    $action = "/seguir?usuario=$id";
+                }else {
+                     $action = "/cancelarPedido?usuario=$id";
+                }
+            ?>
+
+            <form id="usuario<?php echo $key ?>" class="usuario" action="<?php echo $action ?>" method="post">
                 <div class="bar">
-                    <img src="../img/PerfilVazia.jpg" alt="">
+                    <img src="../img/<?php echo $value['imagem_usuario'] ?>" alt="">
                     <p class="nome"><?php print($value['nome']) ?></p>
                 </div>
                 <p class="sobremim"><?php print($value['sobremim']) ?></p>
@@ -20,7 +32,7 @@
                 <?php if ($value['status_pedido'] === 'sem_pedido') { ?>
                     <input type="submit" value="Pedir para seguir">
                 <?php } else { ?>
-                    <p class="solicitacao"> Solicitação pendente </p>
+                    <input type="submit" id="cancelar_s" value="Cancelar a solicitação">
                 <?php } ?>
 
             </form>

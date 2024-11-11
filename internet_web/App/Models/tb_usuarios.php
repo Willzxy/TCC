@@ -97,6 +97,7 @@ class tb_usuarios extends Models
                 u.id, 
                 u.nome, 
                 u.sobremim, 
+                u.fotoperfil AS imagem_usuario,  -- Adicionando o campo de imagem do usuário
                 CASE 
                     WHEN p.id_usuario_pedido IS NOT NULL THEN 'pedido_pendente'
                     ELSE 'sem_pedido'
@@ -110,13 +111,14 @@ class tb_usuarios extends Models
             WHERE 
                 u.administrador = false 
                 AND u.email != ? 
-                AND u.nome LIKE ?
+                AND u.nome LIKE ? 
                 AND u.id NOT IN (
                     SELECT id_usuario_seguindo 
                     FROM tb_seguidores 
                     WHERE id_usuario = ?
                 )
             LIMIT 25;
+
 
 
         ";
@@ -139,12 +141,12 @@ class tb_usuarios extends Models
     {
         $query = "
         UPDATE tb_usuarios
-        SET nome = ?, sobremim = ?
+        SET nome = ?, sobremim = ?, fotoperfil = ?
         WHERE id = ?;
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('id'));
+        $stmt->bind_param("ssss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('foto_perfil') , $this->__get('id'));
         $stmt->execute();
     }
 
@@ -157,11 +159,12 @@ class tb_usuarios extends Models
         $_SESSION['administrador'] = $dadosAtualizados['administrador'];
         $_SESSION['nome'] = $dadosAtualizados['nome'];
         $_SESSION['sobremim'] = $dadosAtualizados['sobremim'];
+        $_SESSION['fotoperfil'] = $dadosAtualizados['fotoperfil'];
     }
 
     function BuscarDados($id)
     {
-        $query = "select id, nome, sobremim, email, administrador from tb_usuarios where id = ?;";
+        $query = "select id, nome, fotoperfil, sobremim, email, administrador from tb_usuarios where id = ?;";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $id);

@@ -10,12 +10,13 @@
     <?php
     if (isset($this->view->conexoes)) {
         foreach ($this->view->conexoes as $key => $value) { ?>
-            <form id="usuario<?php echo $key ?>" class="usuario">
+            <form id="usuario<?php echo $key ?>" class="usuario" action="/deixarDeSeguir?usuario=<?php echo $value['id_usuario_seguindo']?>" method="post">
                 <div class="bar">
-                    <img src="../img/PerfilVazia.jpg" alt="">
+                    <img src="../img/<?php echo $value['imagem_usuario'] ?>" alt="">
                     <p class="nome"><?php print($value['nome']) ?></p>
                 </div>
                 <p class="sobremim"><?php print($value['sobremim']) ?></p>
+                <input type="submit" id="cancelar_s" value="Deixar de seguir">
             </form>
     <?php }
     } else {

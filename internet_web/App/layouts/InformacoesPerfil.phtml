@@ -1,6 +1,6 @@
 <div id="perfil_info" class="perfil_info">
     <div class="outbar"></div>
-    <img src="../img/PerfilVazia.jpg" class="fotoperfil">
+    <img src="../img/<?php echo $_SESSION['fotoperfil'] ?>" class="fotoperfil">
 
     <h1> <a id="nomeantigo" class="nomeperfil" href="/usuarios"> <?php $this->show('nome') ?> </a> </h1>
     <p id="descricaoantiga"> <?php $this->show('sobremim') ?> </p>

@@ -39,18 +39,36 @@ class tb_seguidores extends Models {
         $stmt->execute();
     }
 
+    public function Unfollow(){
+        $query = "DELETE FROM tb_seguidores
+                WHERE (id_usuario = ? AND id_usuario_seguindo = ?) 
+                OR (id_usuario = ? AND id_usuario_seguindo = ?);";
+
+        $stmt = $this->db->prepare($query);
+        
+        $stmt->bind_param("iiii", 
+            $this->__get('id_usuario'), $this->__get('id_usuario_seguindo'),
+            $this->__get('id_usuario_seguindo'), $this->__get('id_usuario')
+        );
+
+        $stmt->execute();
+    }
+
     public function buscarSeguidores($usuario){
       $query = "
-         SELECT 
-            u.id, 
+        SELECT  
+            s.id_usuario_seguindo AS id_usuario_seguindo,
             u.nome, 
-            u.sobremim
+            u.sobremim,
+            u.fotoperfil AS imagem_usuario  -- Adicionando o campo de imagem do usuário
         FROM 
             tb_seguidores s
         JOIN 
-            tb_usuarios u ON s.id_usuario = u.id
+            tb_usuarios u ON s.id_usuario_seguindo = u.id
         WHERE 
-            s.id_usuario_seguindo = ?;";
+            s.id_usuario = ?;
+            ";
+
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $usuario);

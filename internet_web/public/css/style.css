@@ -699,7 +699,7 @@
     justify-content: space-between;
 }
 
-.timeline .postagem .exibir .conteudo button {
+.timeline .postagem .exibir .conteudo button, .timeline .postagem .exibir .conteudo .curtir {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -714,11 +714,45 @@
     transition: .3s;
 }
 
+.timeline .postagem .exibir .conteudo .descurtir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    text-decoration: none;
+    
+    padding: 3px;
+    background-color: rgba(3, 166, 254, 0.867);
+    border: 1px solid rgba(255, 255, 255, 0.408);
+    color: white;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.timeline .postagem .exibir .conteudo button:hover, .timeline .postagem .exibir .conteudo .curtir:hover {
+    background-color: rgb(190, 190, 190);
+
+    transition: .3s;
+}
+
 .timeline .postagem .exibir .conteudo button:hover {
     background-color: rgb(190, 190, 190);
 
     transition: .3s;
 }
+
+.timeline .postagem .exibir .conteudo .curtir {
+    text-decoration: none;
+
+    width: 20%;
+}
+
+.timeline .postagem .exibir .conteudo .comentar {
+    width: 78%;
+    display: none;
+}
+
 
 /* Pagina Perfil */
 
@@ -944,8 +978,62 @@
     transition: .3s;
 }
 
+.perfil  button:hover {
+    background-color: rgb(190, 190, 190);
+    transition: .3s;
+}
+
+.perfil .descurtir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    text-decoration: none;
+    
+    padding: 3px;
+    background-color: rgba(3, 166, 254, 0.867);
+    border: 1px solid rgba(255, 255, 255, 0.408);
+    color: white;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.perfil .conteudo button:hover, .perfil .conteudo .curtir:hover {
+    background-color: rgb(190, 190, 190);
+
+    transition: .3s;
+}
+
 .perfil .conteudo button:hover {
     background-color: rgb(190, 190, 190);
+
+    transition: .3s;
+}
+
+.perfil .conteudo .curtir {
+    text-decoration: none;
+
+    width: 20%;
+}
+
+.perfil .conteudo .comentar {
+    width: 78%;
+    display: none;
+}
+
+.conteudo .curtir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.335);
+    border: 1px solid rgba(102, 102, 102, 0.408);
+    color: rgb(69, 69, 69);
+    cursor: pointer;
+
     transition: .3s;
 }
 
@@ -1204,7 +1292,76 @@
     transition: .3s;
 }
 
+.minharede .sec2 .resultados .usuario #cancelar_s:hover {
+    background-color: rgb(95, 13, 13);
+    border: 1px solid rgb(34, 6, 6);
+    color: white;
+
+    transition: .3s;
+}
+
+.minharede .sec2 .resultados .grupos #cancelar_s:hover {
+    background-color: rgb(95, 13, 13);
+    border: 1px solid rgb(34, 6, 6);
+    color: white;
+
+    transition: .3s;
+}
+
 .minharede .sec2 .resultados .usuario input:hover {
+    background-color: var(--principal);
+    color: white;
+
+    transition: .3s;
+}
+
+.minharede .sec2 .resultados .grupos {
+    margin-top: 5px;
+    margin-right: 20px;
+    width:  200px;
+    min-height: 120px;
+    max-height: 120px;
+
+    background: rgba(241, 241, 241, 0.689);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+}
+
+.minharede .sec2 .resultados .grupos h1 {
+    margin-top: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.minharede .sec2 .resultados .grupos h2 {
+    font-size: 0.83em;
+    font-weight: 500;
+
+    margin-top: 15px;
+    text-align: center;
+
+    max-height: 50px;
+    min-height: 50px;
+}
+
+.minharede .sec2 .resultados .grupos input {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 2px;
+
+    border-radius: 225px;
+    padding: 2px;
+    color: black;
+    border: 0.1px solid var(--principal);
+    cursor: pointer;
+    background-color: white;
+
+    transition: .3s;
+}
+
+.minharede .sec2 .resultados .grupos input:hover {
     background-color: var(--principal);
     color: white;
 

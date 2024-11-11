@@ -1,10 +1,43 @@
 <div class="pesquisa">
-    <form action="">
-        <input type="text">
+    <form action="/pesquisar">
+        <input type="hidden" name="tip" value='grupos'>
+        <input name="search" type="text">
         <input type="submit" value="Pesquisar">
     </form>
 </div>
 
 <div class="resultados">
-    <h1>Pesquisar por Grupos</h1>
+<?php
+    if (isset($this->view->grupos)) {
+        foreach ($this->view->grupos as $key => $value) { ?>
+            
+            <?php 
+                $action = $value['status_seguimento'];
+                $id = $value["id"];
+
+                if($value['status_seguimento'] === 'nao_segue'){
+                    $action = "/EntrarGrupo?grupo=$id";
+                }else {
+                     $action = "/SairGrupo?grupo=$id";
+                }
+            ?>
+            
+            <form id="usuario<?php echo $key ?>" class="grupos" action="<?php echo $action ?>" method="post">
+                
+                <h1><?php print($value['nome']) ?></h1>
+                <h2><?php print($value['descricao']) ?></h2>
+  
+                <?php 
+                    if($value['status_seguimento'] === 'nao_segue') { ?>
+                    <input type="submit" value="Entrar no grupo">
+                <?php } else { ?>
+                  <input type="submit" id="cancelar_s" value="Sair do grupo">
+                <?php } ?>
+
+            </form>
+    <?php }
+    } else {
+        echo "<h1 Pesquisar por grupos </h1>";
+    }
+    ?>
 </div>

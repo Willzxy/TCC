@@ -15,9 +15,25 @@ class PerfilController extends Action {
         $nome = trim($_POST['nome']);
         $descricao = trim($_POST['descricao']);
 
+        $imagem = $_FILES['imagem'];
+
+        if(isset($imagem)){
+            $arquivo = $_FILES['imagem']; 
+            $nomeOriginal = $arquivo['name']; 
+            $extensao = pathinfo($nomeOriginal, PATHINFO_EXTENSION); 
+            $nomeUnico = uniqid() . '-' . time(); 
+            $imagem = $nomeUnico . '.' . $extensao; 
+
+            $caminhotemporario = $_FILES['imagem']['tmp_name'];
+            $caminhofinal = '../public/Img/'.$imagem;
+
+            move_uploaded_file($caminhotemporario, $caminhofinal);
+        }
+
         $usuario = new tb_usuarios;
         $usuario->__set("nome", $nome);
         $usuario->__set("sobremim", $descricao);
+        $usuario->__set('foto_perfil', $imagem);
         $usuario->__set('id', $usuario->buscarID($_SESSION['email']));
 
         $usuario->atualizar_perfil();

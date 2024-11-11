@@ -73,13 +73,15 @@ class tb_pedidos_seguidores_pendentes extends Models
                     p.id AS pedido_id,
                     p.id_usuario_pedido AS id_usuario_pedido,
                     u.nome AS nome_usuario_pedido,
-                    u.sobremim AS sobremim_usuario_pedido
+                    u.sobremim AS sobremim_usuario_pedido,
+                    u.fotoperfil AS imagem_usuario  -- Adicionando o campo de imagem do usuário
                 FROM 
                     tb_pedidos_seguidores_pendentes p
                 JOIN 
                     tb_usuarios u ON p.id_usuario_pedido = u.id
                 WHERE 
                     p.id_usuario_requisitado = ?;
+
             ";
 
         $stmt = $this->db->prepare($query);

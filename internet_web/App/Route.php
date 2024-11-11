@@ -64,6 +64,54 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        $routes['cancelarPedido'] = array(
+            'route' => '/cancelarPedido',
+            'controller' => 'MinhaRedeController',
+            'action' => 'cancelarPedido',
+            'name' => 'cancelarPedido',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['deixarDeSeguir'] = array(
+            'route' => '/deixarDeSeguir',
+            'controller' => 'MinhaRedeController',
+            'action' => 'deixarDeSeguir',
+            'name' => 'deixarDeSeguir',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['SairGrupo'] = array(
+            'route' => '/SairGrupo',
+            'controller' => 'MinhaRedeController',
+            'action' => 'SairGrupo',
+            'name' => 'SairGrupo',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['descurtir'] = array(
+            'route' => '/descurtir',
+            'controller' => 'TimelineController',
+            'action' => 'descurtir',
+            'name' => 'descurtir',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['curtirPostagem'] = array(
+            'route' => '/curtirPostagem',
+            'controller' => 'TimelineController',
+            'action' => 'curtirPostagem',
+            'name' => 'curtirPostagem',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
+        $routes['EntrarGrupo'] = array(
+            'route' => '/EntrarGrupo',
+            'controller' => 'MinhaRedeController',
+            'action' => 'EntrarGrupo',
+            'name' => 'EntrarGrupo',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
         $routes['aceitarpedido'] = array(
             'route' => '/aceitarpedido',
             'controller' => 'MinhaRedeController',

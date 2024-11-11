@@ -11,6 +11,16 @@
                 <select name="privacidade" id="">
                     <option value="publica">Publico</option>
                     <option value="privada">Privado</option>
+
+                    <?php 
+                            foreach ($this->view->grupos_seguindo as $key => $value) {
+                                $nome = $value['nome_grupo'];
+                            ?>
+
+                                <option> <?php echo $nome ?> </option>
+
+                        <?php } ?>
+
                 </select>
             </li>
 

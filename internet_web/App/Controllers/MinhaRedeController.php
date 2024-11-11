@@ -6,11 +6,15 @@ require_once '../MinhaFramework/Controllers/action.php';
 require_once '../App/Models/tb_usuarios.php';
 require_once '../App/Models/tb_pedidos_seguidores_pendentes.php';
 require_once '../App/Models/tb_seguidores.php';
+require_once '../App/Models/tb_grupos.php';
+require_once '../App/Models/tb_seguindo_grupos.php';
+
 
 use App\Models\tb_usuarios;
 use App\Models\tb_pedidos_seguidores_pendentes;
 use App\Models\tb_seguidores;
-
+use App\Models\tb_grupos;
+use App\Models\tb_seguindo_grupos;
 use MF\Action;
 
 class MinhaRedeController extends Action {
@@ -48,12 +52,42 @@ class MinhaRedeController extends Action {
                 
                 $this->render('autenticado.minharede');
                 break;
+            case 'grupos':
+                $grupos = new tb_grupos;
+                $usuarios = new tb_usuarios;
+
+                $this->view->grupos = $registros = $grupos->ListarGrupos($usuarios->buscarID($_SESSION['email']));
+                $this->render('autenticado.minharede');
+                break;
             default:
                 # code...
                 break;
         }
     }
 
+    public function EntrarGrupo(){
+        $grupos = new tb_seguindo_grupos;
+        $usuarios = new tb_usuarios;
+
+        $grupos->__set('id_usuario', $usuarios->buscarID($_SESSION['email']));
+        $grupos->__set('id_grupo', $_GET['grupo']);
+
+        $grupos->SeguirGrupo();
+
+        $this->redirect('/pesquisar?tip=grupos&search=');
+    }
+
+    public function SairGrupo(){
+        $grupos = new tb_seguindo_grupos;
+        $usuarios = new tb_usuarios;
+
+        $grupos->__set('id_usuario', $usuarios->buscarID($_SESSION['email']));
+        $grupos->__set('id_grupo', $_GET['grupo']);
+
+        $grupos->DeixarDeSeguirGrupo();
+
+        $this->redirect('/pesquisar?tip=grupos&search=');
+    }
 
     public function pedirSeguir(){
         $usuarios = new tb_usuarios;
@@ -63,6 +97,28 @@ class MinhaRedeController extends Action {
         $pedidos_seguidores->__set('id_usuario_requisitado', $_GET['usuario']);
 
         $pedidos_seguidores->pedirParaSeguir();
+        $this->redirect('/pesquisar?tip=usuarios&search=');
+    }
+
+    public function deixarDeSeguir(){
+        $usuarios = new tb_usuarios;
+        $seguidores = new tb_seguidores;
+
+        $seguidores->__set('id_usuario', $usuarios->buscarID($_SESSION['email']));
+        $seguidores->__set('id_usuario_seguindo', $_GET['usuario']);
+
+        $seguidores->Unfollow();
+        $this->redirect('/pesquisar?tip=conexoes&search=');
+    }
+
+    public function cancelarPedido(){
+        $usuarios = new tb_usuarios;
+        $pedidos_seguidores = new tb_pedidos_seguidores_pendentes;
+
+        $pedidos_seguidores->__set('id_usuario_pedido', $usuarios->buscarID($_SESSION['email']));
+        $pedidos_seguidores->__set('id_usuario_requisitado', $_GET['usuario']);
+
+        $pedidos_seguidores->apagarPedido();
         $this->redirect('/pesquisar?tip=usuarios&search=');
     }
 
@@ -81,6 +137,6 @@ class MinhaRedeController extends Action {
 
         $seguidores->seguir();
 
-        $this->redirect('/minharede');
+        $this->redirect('/pesquisar?tip=solicitacoes&search=');
     }
 }

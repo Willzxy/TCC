@@ -169,6 +169,7 @@ class AuthController extends Action {
         $_SESSION['sobremim'] = $dados['sobremim'];
         $_SESSION['email'] = $dados['email'];
         $_SESSION['administrador'] = $dados['administrador'];
+        $_SESSION['fotoperfil'] = $dados['fotoperfil'];
     }
 
     public function validarDados($nome, $senha, $email){

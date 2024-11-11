@@ -2,7 +2,7 @@
 foreach ($temp as $key => $value) { ?>
     <div class="conteudo">
         <div class="informacoes">
-            <img src="../img/PerfilVazia.jpg" alt="" class="fotoperfil">
+            <img src="../img/<?php echo $value['imagem_usuario'] ?>" alt="" class="fotoperfil">
             <div class="s2">
                 <a href="#"> <?php echo $value['nome_usuario'] ?> </a>
                 <p><?php echo $value['sobre_usuario'] ?></p>
@@ -22,17 +22,36 @@ foreach ($temp as $key => $value) { ?>
         <p class="descricao"> <?php echo $value['descricao'] ?> </p>
         <?php
             if($value['imagem'] != 'sem imagem'){ ?> 
-                <img src="../img/teste.png" alt="Conteudo se tiver">
+                <img src="../Img/<?php echo $value['imagem'] ?>" alt="Conteudo se tiver">
         <?php } ?>
         <div class="acoes">
-            <button><span class="material-symbols-outlined">
+
+                <?php 
+                    $caminhocurtir = $value['status_curtida'];
+                    $id = $value['id'];
+
+                    if($caminhocurtir === 'curtido') {
+                        $caminhocurtir = "/descurtir?postagem=$id";
+                        $curtido = 'Não gostei';
+                        $classe = 'descurtir';
+                    }else {
+                        $caminhocurtir = "/curtirPostagem?postagem=$id";
+                        $curtido = 'Gostei';
+                        $classe = 'curtir';
+                    }
+
+                    if(isset($value['local'])) {
+                        $caminhocurtir = $caminhocurtir . '&local=perfil';
+                    }
+                ?>
+
+            <a href=<?php echo $caminhocurtir ?> class= <?php echo $classe ?>><span class="material-symbols-outlined">
                     thumb_up
-                </span> Curtir</button>
-            <button><span class="material-symbols-outlined">
+                </span> <?php echo $curtido ?> </a>
+            <button class="comentar"><span class="material-symbols-outlined">
                     comment
                 </span> Comentar</button>
         </div>
-        
     </div>
-
+    <hr>
 <?php } ?>

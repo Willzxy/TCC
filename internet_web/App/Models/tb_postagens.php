@@ -61,15 +61,36 @@ class tb_postagens extends Models {
 
     public function listar_postagens($id_usuario){
         $query = "
-            SELECT p.*, u.nome as nome_usuario, u.email as email, u.sobremim as sobre_usuario
-            FROM tb_postagens p
-            JOIN tb_usuarios u ON p.id_usuario = u.id
-            WHERE p.id_usuario = ?
-            ORDER BY p.data_postagem DESC;
+            SELECT 
+                p.*, 
+                u.nome AS nome_usuario, 
+                u.email AS email, 
+                u.sobremim AS sobre_usuario,
+                u.fotoperfil AS imagem_usuario,  -- Adicionando a imagem de perfil do usuário
+                'perfil' AS local,
+                CASE 
+                    WHEN EXISTS (
+                        SELECT 1 
+                        FROM tb_curtidas_postagens cp 
+                        WHERE cp.id_postagem = p.id 
+                        AND cp.id_usuario = ?
+                    ) 
+                    THEN 'curtido' 
+                    ELSE 'nao_curtido' 
+                END AS status_curtida
+            FROM 
+                tb_postagens p
+            JOIN 
+                tb_usuarios u ON p.id_usuario = u.id
+            WHERE 
+                p.id_usuario = ?
+            ORDER BY 
+                p.data_postagem DESC;
         ";
 
+
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id_usuario);
+        $stmt->bind_param("ii", $id_usuario, $id_usuario);
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -96,25 +117,44 @@ class tb_postagens extends Models {
             SELECT 
                 p.*, 
                 u.nome AS nome_usuario, 
-                u.sobremim AS sobre_usuario
+                u.sobremim AS sobre_usuario,
+                u.fotoperfil AS imagem_usuario,  -- Adicionando a imagem de perfil do usuário
+                CASE 
+                    WHEN EXISTS (
+                        SELECT 1 
+                        FROM tb_curtidas_postagens cp
+                        WHERE cp.id_postagem = p.id 
+                        AND cp.id_usuario = ?
+                    ) THEN 'curtido'
+                    ELSE 'nao_curtido'
+                END AS status_curtida
             FROM 
                 tb_postagens p
             JOIN 
                 tb_usuarios u ON p.id_usuario = u.id
             WHERE 
-                p.privacidade = 'publico' 
-                AND u.id IN (
-                    SELECT id_usuario_seguindo 
-                    FROM tb_seguidores 
-                    WHERE id_usuario = ?
+                (
+                    (p.privacidade = 'publico' 
+                    AND u.id IN (
+                        SELECT id_usuario_seguindo 
+                        FROM tb_seguidores 
+                        WHERE id_usuario = ?
+                    ))
+                    OR p.privacidade IN (
+                        SELECT g.nome 
+                        FROM tb_seguindo_grupos sg
+                        JOIN tb_grupos g ON sg.id_grupo = g.id
+                        WHERE sg.id_usuario = ?
+                    )
                 )
+                AND u.id != ?
             ORDER BY 
                 p.data_postagem DESC;
 
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id_usuario);
+        $stmt->bind_param("iiii", $id_usuario, $id_usuario, $id_usuario, $id_usuario);
         $stmt->execute();
 
         $result = $stmt->get_result();

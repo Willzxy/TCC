@@ -15,11 +15,12 @@ CREATE TABLE tb_usuarios (
     senha VARCHAR(32) NOT NULL,
     email VARCHAR(200) NOT NULL,
     sobremim VARCHAR(200) DEFAULT 'sem descrição',
-    fotoperfil VARCHAR(200) DEFAULT 'sem foto',
+    fotoperfil VARCHAR(200) DEFAULT 'PerfilVazia.jpg',
     token VARCHAR(200) DEFAULT NULL,
     token_validade_hora TIME DEFAULT NULL,
     token_validade_data DATE DEFAULT NULL,
-    administrador BOOLEAN DEFAULT FALSE
+    administrador BOOLEAN DEFAULT FALSE,
+    ativo BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE tb_seguidores (
@@ -154,9 +155,10 @@ VALUES
 (6, 'Configurando meu novo smartwatch. Muitas funcionalidades úteis.', 'privado', '2024-06-23');
 
 INSERT INTO tb_seguidores (id_usuario, id_usuario_seguindo) VALUES 
-(1, 2),
 (2, 3),
-(3, 4);
+(3, 2),
+(3, 4),
+(4, 2);
 
 INSERT INTO tb_curtidas_postagens (id_usuario, id_postagem) VALUES 
 (1, 1),
@@ -182,13 +184,3 @@ INSERT INTO tb_grupos (nome, descricao) VALUES
 ('Grupo de Desenvolvedores', 'Grupo para discutir novas tecnologias'),
 ('Leitores Ávidos', 'Amantes de livros de todos os tipos'),
 ('Entusiastas de Esportes', 'Para todos que amam esportes');
-
-INSERT INTO tb_pedidos_seguidores_pendentes (id_usuario_pedido, id_usuario_requisitado) VALUES 
-(1, 2),
-(2, 3),
-(3, 1);
-
-INSERT INTO tb_seguindo_grupos (id_grupo, id_usuario) VALUES 
-(1, 1),
-(2, 2),
-(3, 3);

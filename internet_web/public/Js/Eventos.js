@@ -39,7 +39,8 @@ botaoEditarPerfil.addEventListener('click', (event) => {
         <div class="outbar"></div>
         <img src="../img/PerfilVazia.jpg" class="fotoperfil">
 
-        <form action="/atualizarperfil" method="post">
+        <form action="/atualizarperfil" enctype="multipart/form-data" method="post">
+            <input id="image" name="imagem" accept="image/*" type="file">
             <input type="text" name="nome" value="${nomeantigo}" class="nomeperfil">
             <input type="text" name="descricao" value="${descricaoantiga}"  class="descricao">
 
