@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
- 
+
 :root {
     --principal: #7ad266;
     --principal_2: #659856;
@@ -34,7 +34,9 @@
     border: 1px solid red;
 }
 
-.body-registrar p,.body-registrar h1, .body-registrar p li {
+.body-registrar p,
+.body-registrar h1,
+.body-registrar p li {
     text-shadow: .2px .2px 2px black;
 }
 
@@ -117,7 +119,7 @@
     width: 50%;
     height: 100vh;
 
-    box-shadow: inset 18px 0px 22px -3px rgba(0,0,0,0.43);
+    box-shadow: inset 18px 0px 22px -3px rgba(0, 0, 0, 0.43);
 }
 
 .body-registrar .formulario .autenticar .border {
@@ -127,7 +129,7 @@
 .body-registrar .formulario .registrar {
     padding: 20px;
     border-radius: 25px;
-    
+
 }
 
 .body-registrar .formulario .autenticar {
@@ -135,7 +137,8 @@
     border-radius: 25px;
 }
 
-.body-registrar .formulario .autenticar .inputs, .body-registrar .formulario .registrar .inputs {
+.body-registrar .formulario .autenticar .inputs,
+.body-registrar .formulario .registrar .inputs {
     height: 110px;
     display: flex;
 
@@ -147,7 +150,8 @@
     height: 200px;
 }
 
-.body-registrar .formulario .autenticar .inputs input, .body-registrar .formulario .registrar .inputs input {
+.body-registrar .formulario .autenticar .inputs input,
+.body-registrar .formulario .registrar .inputs input {
     outline: 0;
     margin: auto;
     width: 85%;
@@ -161,20 +165,23 @@
     transition: .5s;
 }
 
-.body-registrar .formulario .autenticar .inputs input:focus, .body-registrar .formulario .registrar .inputs input:focus {
+.body-registrar .formulario .autenticar .inputs input:focus,
+.body-registrar .formulario .registrar .inputs input:focus {
     background-color: rgba(13, 88, 138, 0.16);
 
     transition: .5s;
 }
 
-.body-registrar .formulario .autenticar p, .body-registrar .formulario .registrar p {
+.body-registrar .formulario .autenticar p,
+.body-registrar .formulario .registrar p {
     text-align: center;
     font-size: 3em;
 
     color: var(--principal);
 }
 
-.body-registrar .formulario .autenticar #entrar, .body-registrar .formulario .registrar #cadastrar {
+.body-registrar .formulario .autenticar #entrar,
+.body-registrar .formulario .registrar #cadastrar {
     display: block;
     padding: 10px;
     margin: auto;
@@ -189,7 +196,8 @@
     cursor: pointer;
 }
 
-.body-registrar .formulario .autenticar a, .body-registrar .formulario .registrar a {
+.body-registrar .formulario .autenticar a,
+.body-registrar .formulario .registrar a {
     display: block;
     text-align: center;
 
@@ -221,7 +229,7 @@
     justify-content: flex-start;
     height: 45px;
 
-    margin-left:14.95% ;
+    margin-left: 14.95%;
     width: 61.84%;
 }
 
@@ -269,10 +277,10 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
-#menu .form ul li  {
+#menu .form ul li {
     width: 100%;
 }
 
@@ -344,7 +352,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .timeline .n1 .perfil ul li span {
@@ -357,7 +365,7 @@
     height: 50px;
 
     border-radius: 10px 10px 0px 0px;
-    background-color:  var(--principal);
+    background-color: var(--principal);
 }
 
 .timeline .n1 .perfil .fotodeperfil {
@@ -422,7 +430,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .timeline .n1 .logout {
@@ -432,7 +440,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 
     display: block;
     background-color: rgb(139, 19, 19);
@@ -483,12 +491,12 @@
 
 .timeline .postagem .criar {
     margin-bottom: 10px;
-    width: 100%; 
+    width: 100%;
 
     background-color: white;
     border-radius: 10px;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .timeline .postagem .criacao {
@@ -509,7 +517,7 @@
 }
 
 .timeline .postagem .criacao textarea {
-    width:  85%;
+    width: 85%;
     height: 40px;
 
     border-radius: 20px;
@@ -609,7 +617,7 @@
     background-color: white;
     border-radius: 10px;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .timeline .postagem .exibir .conteudo {
@@ -634,7 +642,7 @@
 }
 
 
-.timeline .postagem .exibir .conteudo .informacoes  {
+.timeline .postagem .exibir .conteudo .informacoes {
     display: flex;
 }
 
@@ -699,12 +707,13 @@
     justify-content: space-between;
 }
 
-.timeline .postagem .exibir .conteudo button, .timeline .postagem .exibir .conteudo .curtir {
+.timeline .postagem .exibir .conteudo button,
+.timeline .postagem .exibir .conteudo .curtir {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 47%;
-    
+
     padding: 3px;
     background-color: rgba(255, 255, 255, 0.335);
     border: 1px solid rgba(102, 102, 102, 0.408);
@@ -720,7 +729,7 @@
     align-items: center;
     width: 20%;
     text-decoration: none;
-    
+
     padding: 3px;
     background-color: rgba(3, 166, 254, 0.867);
     border: 1px solid rgba(255, 255, 255, 0.408);
@@ -730,7 +739,8 @@
     transition: .3s;
 }
 
-.timeline .postagem .exibir .conteudo button:hover, .timeline .postagem .exibir .conteudo .curtir:hover {
+.timeline .postagem .exibir .conteudo button:hover,
+.timeline .postagem .exibir .conteudo .curtir:hover {
     background-color: rgb(190, 190, 190);
 
     transition: .3s;
@@ -781,7 +791,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .perfil .sec2 h1 {
@@ -829,14 +839,14 @@
     color: var(--principal);
     border: 0.1px solid var(--principal);
     cursor: pointer;
-} 
+}
 
 .perfil .perfil_info {
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
     overflow: hidden;
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .perfil .perfil_info .outbar {
@@ -846,7 +856,7 @@
     background-color: var(--principal);
 }
 
-.perfil .perfil_info  .fotoperfil {
+.perfil .perfil_info .fotoperfil {
     width: 125px;
     height: 125px;
     margin-left: 20px;
@@ -858,7 +868,9 @@
     border: 5px solid white;
 }
 
-.perfil .perfil_info h1, p, form {
+.perfil .perfil_info h1,
+p,
+form {
     margin-left: 20px;
 }
 
@@ -868,7 +880,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .perfil .conteudo {
@@ -978,7 +990,7 @@
     transition: .3s;
 }
 
-.perfil  button:hover {
+.perfil button:hover {
     background-color: rgb(190, 190, 190);
     transition: .3s;
 }
@@ -989,7 +1001,7 @@
     align-items: center;
     width: 20%;
     text-decoration: none;
-    
+
     padding: 3px;
     background-color: rgba(3, 166, 254, 0.867);
     border: 1px solid rgba(255, 255, 255, 0.408);
@@ -999,7 +1011,8 @@
     transition: .3s;
 }
 
-.perfil .conteudo button:hover, .perfil .conteudo .curtir:hover {
+.perfil .conteudo button:hover,
+.perfil .conteudo .curtir:hover {
     background-color: rgb(190, 190, 190);
 
     transition: .3s;
@@ -1027,7 +1040,7 @@
     justify-content: center;
     align-items: center;
     width: 47%;
-    
+
     padding: 3px;
     background-color: rgba(255, 255, 255, 0.335);
     border: 1px solid rgba(102, 102, 102, 0.408);
@@ -1046,7 +1059,7 @@
     text-decoration: underline;
 }
 
-.perfil .sec1 .perfil_info  button {
+.perfil .sec1 .perfil_info button {
     margin: 15px 20px;
     padding: 10px;
     border-radius: 15px;
@@ -1094,7 +1107,7 @@
     border: none;
     text-shadow: .2px .2px 2px black;
     cursor: pointer;
-} 
+}
 
 /* Pagina Minha rede */
 
@@ -1118,7 +1131,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .minharede .sec2 {
@@ -1169,7 +1182,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .minharede .sec2 .pesquisa form {
@@ -1194,7 +1207,7 @@
 
 .minharede .sec2 .pesquisa form input[type='submit'] {
     outline: 0;
-   
+
     border: 0.2px solid rgb(198, 198, 198);
     background-color: rgba(240, 240, 240, 0.531);
     padding: 2px;
@@ -1217,7 +1230,7 @@
     border-radius: 10px;
     background-color: white;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .minharede .sec2 .resultados .usuario {
@@ -1230,17 +1243,17 @@
 
     margin-top: 5px;
     margin-right: 20px;
-    width:  130px;
+    width: 130px;
     min-height: 130px;
     max-height: 130px;
     padding: 3px;
 
     background: rgba(241, 241, 241, 0.689);
     border-radius: 10px;
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
-.minharede .sec2 .resultados .usuario > .bar {
+.minharede .sec2 .resultados .usuario>.bar {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -1255,7 +1268,7 @@
     border-radius: 50%;
 }
 
-.minharede .sec2 .resultados .usuario .nome  {
+.minharede .sec2 .resultados .usuario .nome {
     font-size: .8em;
     width: 100%;
     margin-right: 5px;
@@ -1269,7 +1282,7 @@
 
 .minharede .sec2 .resultados .usuario input {
     border-radius: 25px;
-    width:  90%;
+    width: 90%;
     padding: 2px;
     color: black;
     border: 0.1px solid var(--principal);
@@ -1279,10 +1292,10 @@
     transition: .3s;
 }
 
-.minharede .sec2 .resultados .usuario  .solicitacao {
+.minharede .sec2 .resultados .usuario .solicitacao {
     border-radius: 225px;
     text-align: center;
-    width:  90%;
+    width: 90%;
     padding: 2px;
     color: black;
     border: 0.1px solid var(--principal);
@@ -1318,13 +1331,13 @@
 .minharede .sec2 .resultados .grupos {
     margin-top: 5px;
     margin-right: 20px;
-    width:  200px;
+    width: 200px;
     min-height: 120px;
     max-height: 120px;
 
     background: rgba(241, 241, 241, 0.689);
     border-radius: 10px;
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 }
 
 .minharede .sec2 .resultados .grupos h1 {
@@ -1385,18 +1398,16 @@
 }
 
 #admin .opcoes {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-
     padding: 10px;
-    width:  50%;
+    min-width: 50%;
+    max-width: 95%;
+
+    overflow-x: auto;
 
     background-color: var(--principal_2);
     border-radius: 10px;
     border: 0.2px solid rgb(228, 228, 228);
-    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.45);
 
     margin-top: 50px;
 }
@@ -1430,4 +1441,109 @@
 #admin .sair:hover {
     background-color: rgb(103, 11, 11);
     font-weight: 700;
+}
+
+/* extras */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-width: 180px;
+    text-align: left;
+    font-size: 0.88em;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+tr {
+    font-size: 0.98em;
+}
+
+td {
+    overflow-x: auto;
+}
+
+tr:nth-child(even) {
+    background-color: var(--principal);
+}
+
+
+.editar {
+    background-color: #FFC107;
+    /* Amarelo */
+    border: 1px solid black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.editar:hover {
+    background-color: #E0A800;
+}
+
+.excluir {
+    background-color: #DC3545;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.excluir:hover {
+    background-color: #C82333;
+}
+
+.salvar {
+    background-color: #28a745;
+    /* Verde */
+    color: white;
+    border: 1px solid black;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.salvar:hover {
+    background-color: #218838;
+    display: block;
+}
+
+.cancelar {
+    background-color: #dc3545;
+    /* Vermelho */
+    color: white;
+    border: 1px solid black;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancelar:hover {
+    background-color: #c82333;
 }

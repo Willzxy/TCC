@@ -137,6 +137,60 @@ class tb_usuarios extends Models
         return $registros;
     }
 
+    function select()
+    {
+        $query = " SELECT * FROM tb_usuarios;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        $results = $stmt->get_result();
+
+        $registros = array();
+        while ($row = $results->fetch_assoc()) {
+            array_push($registros, $row);
+        }
+
+        return $registros;
+    }
+
+    public function editar()
+    {
+        $query = "
+        UPDATE tb_usuarios
+        SET nome = ?, senha = ?, email = ?, sobremim = ?, fotoperfil = ?, token = ?, 
+            token_validade_hora = ?, token_validade_data = ?, administrador = ?, ativo = ?
+        WHERE id = ?;
+    ";
+
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bind_param(
+            "ssssssssssi",
+            $this->__get('nome'),
+            $this->__get('senha'),
+            $this->__get('email'),
+            $this->__get('sobremim'),
+            $this->__get('fotoperfil'),
+            $this->__get('token'),
+            $this->__get('token_validade_hora'),
+            $this->__get('token_validade_data'),
+            $this->__get('administrador'),
+            $this->__get('ativo'),
+            $this->__get('id')
+        );
+
+        $stmt->execute();
+    }
+
+    function deletar(){
+        $query = "DELETE FROM tb_usuarios WHERE id = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $this->__get('id'));
+        $stmt->execute();
+    }
+
     function atualizar_perfil()
     {
         $query = "
@@ -146,7 +200,7 @@ class tb_usuarios extends Models
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('foto_perfil') , $this->__get('id'));
+        $stmt->bind_param("ssss", $this->__get('nome'), $this->__get('sobremim'), $this->__get('foto_perfil'), $this->__get('id'));
         $stmt->execute();
     }
 

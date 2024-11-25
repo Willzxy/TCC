@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php $this->layout('LinksHead') ?>
+    <title>Administrador | FriendCircle</title>
+
+    <?php
+        $dados = $this->view->dados;
+        $tabela = $this->view->tabela;
+        $nomeTabelas = array();
+
+        foreach ($dados[1] as $key => $value) {
+            array_push($nomeTabelas, $key);
+        }
+    ?>
+
+</head>
+
+<body id="admin">
+
+    <h1>Gerenciamento De Usuarios</h1>
+
+    <div class="opcoes">
+        <h2>Inserir Dados</h2>
+        <form action="" method="post"></form>
+    </div>
+
+    <div class="opcoes">
+        <table>
+            <thead>
+                <tr>
+                    <?php foreach ($dados[1] as $key => $value) { ?>
+                        <th><?php echo $key; ?></th>
+                    <?php } ?>
+
+                    <th>EDITAR</th>
+                    <th>EXCLUIR</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php foreach ($dados as $key => $value) { ?>
+                    <tr id="registro_<?php echo $key; ?>">
+
+                        <?php foreach ($value as $coluna => $valor) { ?>
+                            <td data-coluna="<?php echo $coluna; ?>" namespace="<?php echo $valor; ?>">
+                                <?php echo $valor; ?>
+                            </td>
+                        <?php } ?>
+
+                        <td><button class="editar" id="editar_<?php echo $key; ?>">Editar</button></td>
+
+                        <td>
+                            <form action="/excluir_<?php echo $tabela; ?>" method="post">
+                                <input type="hidden" name="id" value="<?php echo $key; ?>">
+                                <input class="excluir" type="submit" value="EXCLUIR">
+                            </form>
+                        </td>
+                        
+                    </tr>
+                <?php } ?>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

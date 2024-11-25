@@ -6,8 +6,11 @@ require_once '../MinhaFramework/Init/Bootstrap.php';
 
 use MF\BootStrap;
 
-Class Route extends BootStrap {
-    function InitRoutes(){
+class Route extends BootStrap
+{
+    function InitRoutes()
+    {
+        // Rotas para o Admin
         $routes['admin'] = array(
             'route' => '/admin',
             'controller' => 'AdminController',
@@ -16,8 +19,33 @@ Class Route extends BootStrap {
             'middleware' => 'Administrador'
         );
 
+        $routes['adm_usuarios'] = array(
+            'route' => '/adm_usuarios',
+            'controller' => 'AdminController',
+            'action' => 'usuarios',
+            'name' => 'usuarios',
+            'middleware' => 'Administrador'
+        );
+
+        $routes['excluir_tb_usuarios'] = array(
+            'route' => '/excluir_tb_usuarios',
+            'controller' => 'AdminController',
+            'action' => 'excluir_tb_usuarios',
+            'name' => 'excluir_tb_usuarios',
+            'middleware' => 'Administrador'
+        );
+
+        $routes['editar_tb_usuarios'] = array(
+            'route' => '/editar_tb_usuarios',
+            'controller' => 'AdminController',
+            'action' => 'editar_tb_usuarios',
+            'name' => 'editar_tb_usuarios',
+            'middleware' => 'Administrador'
+        );
+
+        // Rotas para autenticação e cadastro
         $routes['recuperarsenha'] = array(
-            'route' => '/recuperarsenha',
+            'route' => '/recuperarsenha', 
             'controller' => 'AuthController',
             'action' => 'recuperarsenha',
             'name' => 'recuperarsenha',
@@ -56,6 +84,7 @@ Class Route extends BootStrap {
             'middleware' => ''
         );
 
+        // Rotas para Minha Rede
         $routes['seguir'] = array(
             'route' => '/seguir',
             'controller' => 'MinhaRedeController',
@@ -88,22 +117,6 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
-        $routes['descurtir'] = array(
-            'route' => '/descurtir',
-            'controller' => 'TimelineController',
-            'action' => 'descurtir',
-            'name' => 'descurtir',
-            'middleware' => 'VerificarAutenticacao'
-        );
-
-        $routes['curtirPostagem'] = array(
-            'route' => '/curtirPostagem',
-            'controller' => 'TimelineController',
-            'action' => 'curtirPostagem',
-            'name' => 'curtirPostagem',
-            'middleware' => 'VerificarAutenticacao'
-        );
-
         $routes['EntrarGrupo'] = array(
             'route' => '/EntrarGrupo',
             'controller' => 'MinhaRedeController',
@@ -117,15 +130,6 @@ Class Route extends BootStrap {
             'controller' => 'MinhaRedeController',
             'action' => 'aceitarpedido',
             'name' => 'aceitarpedido',
-            'middleware' => 'VerificarAutenticacao'
-        );
-        
-
-        $routes['timeline'] = array(
-            'route' => '/timeline',
-            'controller' => 'TimelineController',
-            'action' => 'timeline',
-            'name' => 'timeline',
             'middleware' => 'VerificarAutenticacao'
         );
 
@@ -145,6 +149,15 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        // Rotas para Timeline
+        $routes['timeline'] = array(
+            'route' => '/timeline',
+            'controller' => 'TimelineController',
+            'action' => 'timeline',
+            'name' => 'timeline',
+            'middleware' => 'VerificarAutenticacao'
+        );
+
         $routes['deletarpostagem'] = array(
             'route' => '/deletarpostagem',
             'controller' => 'PerfilController',
@@ -161,6 +174,7 @@ Class Route extends BootStrap {
             'middleware' => 'VerificarAutenticacao'
         );
 
+        // Rotas para Perfil
         $routes['perfil'] = array(
             'route' => '/perfil',
             'controller' => 'PerfilController',
